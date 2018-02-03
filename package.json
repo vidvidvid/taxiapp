@@ -1,0 +1,16 @@
+{
+  "name": "taxiapp",
+  "version": "1.0.0",
+  "description": "Simulation of a taxi renting service",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "mongoose": "*"
+  },
+  "author": "Vid Topolovec",
+  "license": "ISC"
+}
