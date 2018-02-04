@@ -77,6 +77,7 @@ module.exports.updateTaxi = function(id, taxi, options, callback){ //taxi = nov 
         max_p: taxi.max_p,
         max_s: taxi.max_s,
         sum: taxi.sum,
+        photo_url: taxi.photo_url,
         history: taxi.history,
         name: taxi.name
     }

@@ -24,6 +24,10 @@ var rentSchema = mongoose.Schema({
         require: true,
         default: Date()
     },
+    price: {
+        type: Number,
+        
+    },
 });
 
 // Rent objekt bo povsod dostopen

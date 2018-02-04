@@ -10,7 +10,7 @@ myApp.config(function($routeProvider){
         controller: 'TaxiesController',
         templateUrl: 'views/taxies.html'
     })
-    .when('/taxies/details/:carId', {
+    .when('/taxies/details/:id', {
         controller: 'TaxiesController',
         templateUrl: 'views/taxi_details.html'
     })
@@ -18,10 +18,14 @@ myApp.config(function($routeProvider){
         controller: 'TaxiesController',
         templateUrl: 'views/add_taxi.html'
     })
-    .when('/taxies/edit/:carId', {
+    .when('/taxies/rent/:id', {
         controller: 'TaxiesController',
-        templateUrl: 'views/edit_taxi.html'
+        templateUrl: 'views/rent_taxi.html'
     })
+    /*.when('/rents/add/:id', {
+        controller: 'RentsController',
+        templateUrl: 'views/add_rent.html'
+    })*/
     .otherwise({
         redirectTo: '/'
     });

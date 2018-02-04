@@ -1,0 +1,27 @@
+<a href="#!">Go back</a>
+<h2>Rent a taxi</h2>
+
+<form ng-controller="RentController as rentCtrl" ng-init="getTaxi()" ng-submit="rentCtrl.rentTaxi(taxi)">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" ng-model="rentCtrl.rent.name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label>Surname</label>
+        <input type="text" class="form-control" ng-model="rentCtrl.rent.surname" placeholder="Surname">
+    </div>
+    <div class="form-group">
+        <label>Company</label>
+        <input type="text" class="form-control" ng-model="rentCtrl.rent.company" placeholder="Company">
+    </div>
+    <div class="form-group">
+        <label>Length</label>
+        <input type="number" class="form-control" ng-model="rentCtrl.rent.length" placeholder="Length">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+
+
+
