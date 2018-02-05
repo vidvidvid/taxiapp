@@ -55,4 +55,14 @@ myApp.controller('RentController', ['$scope', '$http', '$location', '$routeParam
         return total;
     }
 
+    this.getTotalAll = function(taxies){
+        var total = 0;
+        for(var i = 0; i < taxies.length; i++){
+            for(var j = 0; j < taxies[i].history.length; j++){
+                if(taxies[i].history[j].price) total += taxies[i].history[j].price;
+            }
+        }
+        return total;
+    }
+
 }]);

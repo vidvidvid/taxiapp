@@ -3,9 +3,22 @@
         <title>Taxi app</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
-    <body>
-        <h1 href="#!">Taxi app - header</h1>
-        <h2>Skupni dobicek</h2>
+    <body >
+        <h1 href="#!"><img src="/img/logo/taxi.png"></h1>
+        <div ng-controller="TaxiesController">
+        <h2>
+            <div ng-init="getTaxies()" ng-controller="RentController as rentCtrl">
+                Skupna vsota dobickov: {{rentCtrl.getTotalAll(taxies)}} <br>
+            </div>
+        </h2>
+        </div>  
+        <!--<h2>Skupni dobicek
+            <div ng-init="getTaxies()" ng-controller="RentController as rentCtrl">
+                Skupna vsota dobickov: {{rentCtrl.getTotalAll(taxies)}} <br>
+            </div>
+        </h2>-->
+
+
         <a href="#!/taxies/add">Add a taxi</a>
         
         
@@ -19,3 +32,5 @@
         <script src="/controllers/rents.js"></script>
     </body>
 </html>
+
+<!--ToDo: Skupni dobicek,   -->
