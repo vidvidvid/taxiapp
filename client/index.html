@@ -1,36 +1,24 @@
 <html ng-app="myApp">
     <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+        <script src="https://cdn.jsdelivr.net/ngstorage/0.3.10/ngStorage.min.js"></script>
         <title>Taxi app</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
-    <body >
-        <h1 href="#!"><img src="/img/logo/taxi.png"></h1>
-        <div ng-controller="TaxiesController">
-        <h2>
-            <div ng-init="getTaxies()" ng-controller="RentController as rentCtrl">
-                Skupna vsota dobickov: {{rentCtrl.getTotalAll(taxies)}} <br>
-            </div>
-        </h2>
-        </div>  
-        <!--<h2>Skupni dobicek
-            <div ng-init="getTaxies()" ng-controller="RentController as rentCtrl">
-                Skupna vsota dobickov: {{rentCtrl.getTotalAll(taxies)}} <br>
-            </div>
-        </h2>-->
-
-
-        <a href="#!/taxies/add">Add a taxi</a>
+    <body>
         
+        <div ng-include="'/views/header.html'"></div>
         
         <div ng-view></div>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+
         <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="/app.js"></script>
         <script src="/controllers/taxies.js"></script>
         <script src="/controllers/rents.js"></script>
+        <script src="/controllers/storage.js"></script>
     </body>
 </html>
 
 <!--ToDo: Skupni dobicek,   -->
+

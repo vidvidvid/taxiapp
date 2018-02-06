@@ -1,7 +1,8 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+angular
+    .module('myApp', ['ngRoute', 'ngStorage'])
+    .config(config);
 
-// setting up routes
-myApp.config(function($routeProvider){
+function config($routeProvider){
     $routeProvider.when('/', {
         controller: 'TaxiesController',
         templateUrl: 'views/taxies.html'
@@ -29,4 +30,4 @@ myApp.config(function($routeProvider){
     .otherwise({
         redirectTo: '/'
     });
-});
+};

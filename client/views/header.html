@@ -1,0 +1,11 @@
+<img src="/img/logo/taxi.png">
+<div ng-controller="TaxiesController">
+    <div ng-init="getTaxies()" ng-controller="RentController as rentCtrl">
+        <div ng-controller="Ctrl">
+            <form ng-submit="$storage.taxiSum = rentCtrl.getTotalAll(taxies); $storage.y = $storage.y + 100; addTaxi()">
+                <input type="submit" value="Add a taxi" />
+            </form>
+            Skupna vsota dobickov: {{$storage.taxiSum - $storage.y}} <br>
+        </div>
+    </div>
+</div>
