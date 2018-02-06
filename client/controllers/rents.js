@@ -8,9 +8,9 @@ angular
         vm.rentTaxi = rentTaxi;
         vm.getTotal = getTotal;
         vm.getTotalAll = getTotalAll;
+        vm.infoPrice = infoPrice;
 
         function rentTaxi (taxi) {
-            console.log(taxi);
             taxi.history.push(this.rent);
             var id = $routeParams.id; 
             $http.put('/api/taxies/'+id, taxi).then(function(response){
@@ -38,5 +38,11 @@ angular
             }
             return total;
         }
+
+        function infoPrice (seconds){
+            if(seconds>300) return 300*5 + (seconds-300)*7.5;
+            return seconds*5;
+        }
+
 
     }]);

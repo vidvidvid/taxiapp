@@ -2,25 +2,24 @@
 <h2>Rent a taxi</h2>
 
 <form ng-controller="RentController as rentCtrl" ng-init="getTaxi()" ng-submit="rentCtrl.rentTaxi(taxi)">
-    <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" ng-model="rentCtrl.rent.name" placeholder="Name">
+    <div ng-show="rentCtrl.rent.length">
+        Informativni izracun cene: {{rentCtrl.infoPrice(rentCtrl.rent.length)}}
     </div>
     <div class="form-group">
-        <label>Surname</label>
-        <input type="text" class="form-control" ng-model="rentCtrl.rent.surname" placeholder="Surname">
+        <input type="text" class="form-control" ng-model="rentCtrl.rent.name" placeholder="Ime">
     </div>
     <div class="form-group">
-        <label>Company</label>
-        <input type="text" class="form-control" ng-model="rentCtrl.rent.company" placeholder="Company">
+        <input type="text" class="form-control" ng-model="rentCtrl.rent.surname" placeholder="Priimek">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" ng-model="rentCtrl.rent.company" placeholder="Podjetje">
     </div>
     <!--<div class="form-group">
             <label>Price</label>
             <input type="number" class="form-control" ng-model="rentCtrl.rent.price" placeholder="Price">
         </div>-->
     <div class="form-group">
-        <label>Length</label>
-        <input type="number" class="form-control" ng-model="rentCtrl.rent.length" placeholder="Length" required>
+        <input type="number" class="form-control" ng-model="rentCtrl.rent.length" placeholder="Dolzina (v sekundah)" required>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
