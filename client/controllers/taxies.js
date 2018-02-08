@@ -16,10 +16,17 @@ angular
         }
 
         $scope.addTaxi = function(){
-            console.log($scope.taxi);
-            $http.post('/api/taxies/', $scope.taxi).then(function(response){ 
-                window.location.href='#!/taxies'; 
-            });
+            var taxi = {photo_url: '', number: 0};
+            var photo;
+            $http.get('https://api.unsplash.com/photos/random?client_id=7b8105b594859445adc64d0dfe73fc9282dda72dfc283476dd166899a441df10&query=taxi').then(function(response){ //make a get req from this address
+                photo = response.data; 
+                taxi.photo_url = photo.urls.small;
+                taxi.name = "Taxi nr. ";
+                $http.post('/api/taxies/', taxi).then(function(response){ 
+                    window.location.href='#!/taxies'; 
+                    console.log($scope.taxi);
+                });
+            });            
         }
 
         $scope.removeTaxi = function(id){

@@ -5,19 +5,29 @@ angular
         var vm = this;
 
         vm.rent = {date: Date.now()};
+        vm.cancel = {name: 'Preklic', price: -500}
         vm.rentTaxi = rentTaxi;
         vm.getTotal = getTotal;
         vm.getTotalAll = getTotalAll;
         vm.infoPrice = infoPrice;
 
         function rentTaxi (taxi) {
-            taxi.history.push(this.rent);
+            taxi.history.push(vm.rent);
             var id = $routeParams.id; 
             $http.put('/api/taxies/'+id, taxi).then(function(response){
                 console.log(taxi); 
                 window.location.href='#!'; 
             });
-            this.rent = {};
+            vm.rent = {};
+        }
+
+        function cancelTaxi (taxi) {
+            taxi.history.push(vm.cancel);
+            var id = $routeParams.id; 
+            $http.put('/api/taxies/'+id, taxi).then(function(response){
+                console.log(taxi); 
+                window.location.href='#!'; 
+            });
         }
 
         function getTotal (taxi) {

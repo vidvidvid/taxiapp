@@ -15,7 +15,7 @@
 <img src="/img/logo/taxi.png">
 <div ng-controller="TaxiesController">
     <div ng-init="getTaxies()" ng-controller="RentController as rentCtrl">
-        <div ng-controller="Ctrl">
+        <div ng-controller="StorageController">
             <form ng-submit="$storage.x = rentCtrl.getTotalAll(taxies); $storage.y = $storage.y + 100" action="#!/taxies/add">
                 <input type="submit" value="Add a taxi" />
             </form>

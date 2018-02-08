@@ -11,8 +11,7 @@
         Zgodovina najemov:  <br>
         <div ng-repeat="rent in taxi.history">
                 {{rent.date | date:'MM/dd/yyyy'}} <br>
-                {{rent.name}} <br>
-                {{rent.surname}} <br>
+                {{rent.name}}, {{rent.surname}} <br>
                 {{rent.company}} <br>
                 {{rent.length}} <br>
                 {{rent.price | currency : "€"}} <br><br>

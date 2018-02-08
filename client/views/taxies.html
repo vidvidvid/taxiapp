@@ -1,11 +1,13 @@
 <div ng-init="getTaxies()">
     <div ng-repeat="taxi in taxies">
-        <a href="#!/taxies/rent/{{taxi._id}}">Rent</a> | 
-        <a href="#!" ng-click="removeTaxi(taxi._id)">Delete</a><br>
+        <a href="#!/taxies/rent/{{taxi._id}}">Najemi</a> | <!-- show if taxi.available -->
+        <button ng-controller="RentController as rentCtrl" ng-init="cancelTaxi()" ng-click="rentCtrl.cancelTaxi(taxi)">Preklici</button> | <!-- show if !taxi.available, torej cancel ce je rentan atm--> 
+        <a href="#!" ng-click="removeTaxi(taxi._id)">Delete</a> 
+        <br>
         <img ng-src="{{taxi.photo_url}}">
         <h3>
             Naziv: {{taxi.name}}
-        </h3> 
+        </h3>
         Leto izdelave: {{taxi.year}} <br>
         Max potnikov: {{taxi.max_p}} <br>
         Max hitrost: {{taxi.max_s}} <br>
@@ -13,5 +15,5 @@
         <br><br>
     </div>
 </div>
-
+ 
 <!--ToDo:  -->
