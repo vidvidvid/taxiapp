@@ -37,6 +37,11 @@ var taxiSchema = mongoose.Schema({
             return Math.floor(Math.random()*18+1990);
         }*/
     },
+    available: { //random iz nekega arraya
+        type: Boolean,
+        require: true,
+        default: true
+    },
     sum: {
         type: Number,
         require: true,

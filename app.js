@@ -6,7 +6,6 @@ app.use(express.static(__dirname +'/client'));
 app.use(bodyParser.json());
 
 Taxi = require('./models/taxi');
-Rent = require('./models/rent');
 
 //Connect to Mongoose
 mongoose.connect('mongodb://localhost/taxiapp');
@@ -65,46 +64,6 @@ app.delete('/api/taxies/:_id', function(req, res){
         res.json(taxi);
     });
 })
-
-// -------------------------------
-// RENTS
-// -------------------------------
-
-// get all rents
-app.get('/api/rents', function(req, res){
-    Rent.getRents(function(err, rents){
-        if(err) throw err;
-        res.json(rents);
-    });
-})
-
-// create a rent
-app.post('/api/rents', function(req, res){
-    var rent = req.body;
-    Rent.addRent(rent, function(err, rent){
-        if(err) throw err;
-        res.json(rent);
-    });
-})
-
-// get one rent by ID
-app.get('/api/rents/:_id', function(req, res){
-    Rent.getRentById(req.params._id, function(err, rent){
-        if(err) throw err;
-        res.json(rent);
-    });
-})
-
-// delete a rent
-app.delete('/api/rents/:_id', function(req, res){
-    var id = req.params._id; // v db je '_id'
-    Rent.deleteRent(id, function(err, rent){
-        if(err) throw err;
-        res.json(rent);
-    });
-})
-
-
 
 app.listen(3000);
 console.log('App running on port 3000')
