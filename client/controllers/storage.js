@@ -5,7 +5,7 @@ angular
         $localStorage
     ){
         $scope.$storage = $localStorage.$default({
-        y: 10,
+        minus: 100,
         taxiNr: 1
         });
     });

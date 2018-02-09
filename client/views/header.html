@@ -16,10 +16,8 @@
 <div ng-controller="TaxiesController">
     <div ng-init="getTaxies()" ng-controller="RentController as rentCtrl">
         <div ng-controller="StorageController">
-            <form ng-submit="$storage.x = rentCtrl.getTotalAll(taxies); $storage.y = $storage.y + 100" action="#!/taxies/add">
-                <input type="submit" value="Add a taxi" />
-            </form>
-            Skupna vsota dobickov: {{$storage.x - $storage.y}} <br>
+            <button ng-click="$storage.minus = $storage.minus + 100; $storage.x = rentCtrl.getTotalAll(taxies); addTaxi()">Add a taxi</button>
+            Skupna vsota dobickov: {{$storage.x - $storage.minus}} <br>
         </div>
     </div>
 </div> 

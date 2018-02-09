@@ -84,7 +84,8 @@ module.exports.updateTaxi = function(id, taxi, options, callback){ //taxi = nov 
         sum: taxi.sum,
         photo_url: taxi.photo_url,
         history: taxi.history,
-        name: taxi.name
+        name: taxi.name,
+        available: taxi.available
     }
     Taxi.findOneAndUpdate(query, update, options, callback);
 };

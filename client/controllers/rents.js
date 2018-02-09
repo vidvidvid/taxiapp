@@ -13,16 +13,18 @@ angular
 
         function rentTaxi (taxi) {
             taxi.history.push(vm.rent);
-            var id = $routeParams.id; 
+            taxi.available = false;
+            var id = $routeParams.id;
+            console.log(taxi); 
             $http.put('/api/taxies/'+id, taxi).then(function(response){
                 console.log(taxi); 
                 window.location.href='#!'; 
             });
-            vm.rent = {};
         }
 
         function cancelTaxi (taxi) {
             taxi.history.push(vm.cancel);
+            taxi.available = true;
             var id = $routeParams.id; 
             $http.put('/api/taxies/'+id, taxi).then(function(response){
                 console.log(taxi); 
