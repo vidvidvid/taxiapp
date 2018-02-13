@@ -5,7 +5,7 @@ angular
         var dataFactory = {};
 
         dataFactory.getTaxies = function(){
-            return $http.get(urlBase);
+            return $http.get('/api/taxies');
         }
         dataFactory.getTaxi = function(id){
             return $http.get('/api/taxies/'+id);

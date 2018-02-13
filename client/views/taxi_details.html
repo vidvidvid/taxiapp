@@ -5,9 +5,7 @@
         <h3>
         Naziv: {{taxi.name}}
         </h3>
-        <div ng-controller="RentController as rentCtrl">
-        Skupna vsota dobickov: {{rentCtrl.getTotal(taxi)}} <br>
-        </div>
+        Skupna vsota dobickov: {{getTotal(taxi) || []}} <br>
         Zgodovina najemov:  <br>
         <div ng-repeat="rent in taxi.history">
                 {{rent.date | date:'MM/dd/yyyy'}} <br>
@@ -16,13 +14,6 @@
                 {{rent.length}} <br>
                 {{rent.price | currency : "€"}} <br><br>
         </div>
-        <!-- {{taxi.sum}} 
-        {{taxi.history[0].date}}
-        <br> -->
-        <br><br>
+        <br>
     </div>
 </div>
-
-<!--ToDo:
-    - date
--->

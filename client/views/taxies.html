@@ -1,7 +1,9 @@
 <div ng-init="getTaxies()">
     <div ng-repeat="taxi in taxies">
         <a ng-show="taxi.available" href="#!/taxies/rent/{{taxi._id}}">Najemi</a> | <!-- show if taxi.available -->
-        <button ng-hide="taxi.available" ng-controller="RentController as rentCtrl" ng-click="rentCtrl.cancelTaxi(taxi)">Preklici</button> | <!-- show if !taxi.available, torej cancel ce je rentan atm--> 
+        <form ng-hide="taxi.available"  ng-submit="cancelTaxi(taxi, taxi._id)">    
+            <button type="submit">Preklici</button> | <!-- show if !taxi.available, torej cancel ce je rentan atm--> 
+        </form>
         <a href="#!" ng-click="removeTaxi(taxi._id)">Delete</a> 
         <br>
         <img ng-src="{{taxi.photo_url}}">
