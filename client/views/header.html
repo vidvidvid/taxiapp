@@ -16,7 +16,7 @@
 <div ng-controller="TaxiesController">
     <div ng-init="getTaxies();">
         Skupna vsota dobickov:{{gains}} <br>
-        <button ng-click="addTaxi()">Add a taxi</button>
+        <button ng-disabled="0>=gains" ng-click="addTaxi()">Add a taxi</button>
     </div>
 </div> 
 
