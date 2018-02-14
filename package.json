@@ -7,9 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "express": "*",
+    "angular-material": "^1.1.7",
     "body-parser": "*",
-    "mongoose": "*"
+    "express": "*",
+    "mongoose": "*",
+    "uninstall": "0.0.0"
   },
   "author": "Vid Topolovec",
   "license": "ISC"

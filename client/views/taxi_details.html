@@ -7,6 +7,7 @@
         </h3>
         Skupna vsota dobickov: {{getTotal(taxi) || []}} <br>
         Zgodovina najemov:  <br>
+        
         <div ng-repeat="rent in taxi.history">
                 {{rent.date | date:'MM/dd/yyyy'}} <br>
                 {{rent.name}}, {{rent.surname}} <br>

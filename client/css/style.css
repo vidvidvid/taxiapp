@@ -1,0 +1,53 @@
+.buttondemoBasicUsage section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; }
+
+.buttondemoBasicUsage md-content {
+  margin-right: 7px; }
+
+.buttondemoBasicUsage section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+
+.buttondemoBasicUsage .label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  font-size: 14px;
+  opacity: 0.54; }
+
+.gridListdemoBasicUsage md-grid-list {
+  margin: 8px;
+}
+
+.gridListdemoBasicUsage .gray {
+  background: #f5f5f5;
+}
+
+.gridListdemoBasicUsage md-grid-tile {
+  transition: all 400ms ease-out 50ms;
+}
+
+.inputdemoIcons {
+  /*
+.right-icon {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  left: auto;
+  margin-top: 0;
+}
+*/ }
+  .inputdemoIcons .inputIconDemo {
+    min-height: 48px; }
+  .inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: green; }
+  .inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: dodgerblue; }
+  .inputdemoIcons md-input-container.md-input-invalid > md-icon.email,
+  .inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
+    color: red; }

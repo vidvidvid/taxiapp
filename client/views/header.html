@@ -12,11 +12,23 @@
 </div>
 -->
 
-<img src="/img/logo/taxi.png">
-<div ng-controller="TaxiesController">
+
+<div ng-controller="TaxiesController" class="md-padding" style="text-align: center;">
+    <img src="/img/logo/taxi.png" style="width: 200px">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-button aria-label="Go Back">
+            Go Back
+            </md-button>
+            <md-truncate style="position: absolute; left: 90px; right: 170px; top: 20px; bottom: 13px;">Skupna vsota dobickov: {{gains}}</md-truncate>
+            <span flex></span>
+            <md-button class="md-raised" ng-disabled="-1>=gains" ng-click="addTaxi()">Add a taxi</md-button>
+        </div>
+    </md-toolbar>
+    
+    
     <div ng-init="getTaxies();">
-        Skupna vsota dobickov:{{gains}} <br>
-        <button ng-disabled="0>=gains" ng-click="addTaxi()">Add a taxi</button>
+            
     </div>
 </div> 
 

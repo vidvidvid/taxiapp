@@ -1,5 +1,5 @@
 angular
-    .module('myApp', ['ngRoute', 'ngStorage'])
+    .module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages'])
     .config(config);
 
 function config($routeProvider){
