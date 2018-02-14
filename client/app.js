@@ -23,10 +23,6 @@ function config($routeProvider){
         controller: 'TaxiesController',
         templateUrl: 'views/rent_taxi.html'
     })
-    /*.when('/rents/add/:id', {
-        controller: 'RentsController',
-        templateUrl: 'views/add_rent.html'
-    })*/
     .otherwise({
         redirectTo: '/'
     });

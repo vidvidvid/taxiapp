@@ -1,17 +1,16 @@
 <div ng-init="getTaxies()" class="md-padding">
-    <h2>Rent a taxi</h2>
-    <form ng-controller="RentController as rentCtrl" ng-init="getTaxi()" ng-submit="rentCtrl.rentTaxi(taxi)">
+    <form ng-controller="RentController as rentCtrl" ng-init="getTaxi()" ng-submit="rentCtrl.rentTaxi(taxi)"  novalidate>
+        <h2>{{taxi.name}}</h2>
         <div ng-show="rentCtrl.rent.length">
             Informativni izracun cene: {{rentCtrl.infoPrice(rentCtrl.rent.length)}}
         </div>
 
         <div ng-controller="SelectedTextController" class="md-padding " ng-cloak="">
             <div>
-                <h1 class="md-title">Pick an item below</h1>
                 <div layout="row">
                 <md-input-container>
                     <label>Items</label>
-                    <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
+                    <md-select ng-model="selectedItem" md-selected-text="getSelectedText()" required="">
                     <md-optgroup label="items">
                         <md-option ng-value="item" ng-repeat="item in items">{{item}}</md-option>
                     </md-optgroup>
@@ -20,20 +19,21 @@
                 </md-input-container>
                 </div>
             </div>
+            {{selectedItem==='Podjetje'}}
             <div ng-show="selectedItem==='Oseba'">
                 <md-input-container class="md-icon-float md-block form-group" md-no-float="">
                     <label>Ime</label>
-                    <input class="form-control" ng-model="rentCtrl.rent.name" type="text">
+                    <input class="form-control" ng-model="rentCtrl.rent.name" type="text" required="{{selectedItem=='Oseba' ? true : false}}">
                 </md-input-container>
                 <md-input-container class="md-icon-float md-block form-group" md-no-float="">
                     <label>Priimek</label>
-                    <input class="form-control" ng-model="rentCtrl.rent.surname" type="text">
+                    <input class="form-control" ng-model="rentCtrl.rent.surname" type="text" required="{{selectedItem=='Oseba' ? true : false}}">
                 </md-input-container>
             </div>
             <div ng-show="selectedItem==='Podjetje'">
                 <md-input-container class="md-icon-float md-block form-group" md-no-float="">
                     <label>Podjetje</label>
-                    <input class="form-control" ng-model="rentCtrl.rent.company" type="text">
+                    <input class="form-control" ng-model="rentCtrl.rent.company" type="text" required="{{selectedItem=='Podjetje' ? true : false}}">
                 </md-input-container>
             </div>
             <md-input-container class="md-icon-float md-block form-group" md-no-float="">
@@ -45,6 +45,3 @@
     </form>
     </div>
 </div>
-<!--ToDo: 
-- Name & Surname or Company
--->

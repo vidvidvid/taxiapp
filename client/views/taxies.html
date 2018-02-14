@@ -1,11 +1,6 @@
 <div class="md-padding" layout="row" ng-init="getTaxies()" layout-wrap>
     <div ng-repeat="taxi in taxies">
-
-        
-        <a href="#!" ng-click="removeTaxi(taxi._id)">Delete</a> 
-        <br>
-
-
+        <!--<a href="#!" ng-click="removeTaxi(taxi._id)">Delete</a> -->
         <md-card style="width: 300px;">
             <md-button ng-show="taxi.available" ng-href="#!/taxies/rent/{{taxi._id}}">Najem</md-button> <!-- show if taxi.available -->
             <form ng-hide="taxi.available"  ng-submit="cancelTaxi(taxi, taxi._id)">    

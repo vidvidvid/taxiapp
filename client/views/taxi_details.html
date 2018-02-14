@@ -1,20 +1,50 @@
-<a href="#!">Go back</a>
-<div ng-init="getTaxi()">
-    <div>
-        <img ng-src="{{taxi.photo_url}}">
-        <h3>
-        Naziv: {{taxi.name}}
-        </h3>
-        Skupna vsota dobickov: {{getTotal(taxi) || []}} <br>
-        Zgodovina najemov:  <br>
-        
-        <div ng-repeat="rent in taxi.history">
-                {{rent.date | date:'MM/dd/yyyy'}} <br>
-                {{rent.name}}, {{rent.surname}} <br>
-                {{rent.company}} <br>
-                {{rent.length}} <br>
-                {{rent.price | currency : "€"}} <br><br>
+<div flex-gt-sm="50" flex ng-init="getTaxi()" class="md-padding">
+    <md-toolbar layout="row" class="md-hue-3">
+        <div class="md-toolbar-tools">
+            <span id="name">{{taxi.name}}</span>
         </div>
-        <br>
-    </div>
+    </md-toolbar>
+    <br>
+    <div class="row">
+        <div>
+            <img ng-src="{{taxi.photo_url}}">
+        </div>
+        <div>
+            <md-content>
+                <md-list flex>
+                    <md-subheader class="md-no-sticky">Skupna vsota dobickov: {{getTotal(taxi) || []}}</md-subheader>
+                    <md-subheader class="md-no-sticky">Zgodovina najemov</md-subheader>
+                    <md-list-item class="md-3-line" ng-repeat="rent in taxi.history" ng-click="null">
+                        
+                        <md-icon ng-show="rent.company" class="md-avatar ">work</md-icon>
+                        <md-icon ng-show="rent.name!='Preklic' && rent.name!='Nakup'" class="md-avatar">person</md-icon>
+                        <md-icon ng-show="rent.name==='Preklic'" class="md-avatar">cancel</md-icon>
+                        <md-icon ng-show="rent.name==='Nakup'" class="md-avatar">shopping_cart</md-icon>
+                        
+                        <div class="md-list-item-text" layout="column">
+                            <div ng-show="rent.name">
+                                <h3>{{rent.name}} {{rent.surname}}</h3>
+                            </div>
+                            <div ng-show="rent.company">
+                                <h3>{{rent.company}}</h3>
+                            </div>
+                            <div ng-show="rent.date">
+                                <h4>{{rent.date | date:'MM/dd/yyyy'}}</h4>
+                            </div>
+                            <div ng-show="rent.length">
+                                <p>Dolzina najema: {{rent.length}}</p>
+                            </div>
+                            <div ng-show="rent.name != 'Nakup'">
+                                <p>Dobicek: {{rent.price}}</p>
+                            </div>
+                            <div ng-show="rent.name == 'Nakup'">
+                                <p>Cena: {{rent.price*(-1)}}</p>
+                            </div>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </div>
+    </div>            
 </div>
+

@@ -1,34 +1,13 @@
-<!-- 
-<img src="/img/logo/taxi.png">
-<div ng-controller="TaxiesController">
-    <div ng-init="getTaxies()" ng-controller="RentController as rentCtrl">
-        <div ng-controller="Ctrl">
-            <form ng-submit="$storage.taxiSum = rentCtrl.getTotalAll(taxies); $storage.y = $storage.y + 100; addTaxi()">
-                <input type="submit" value="Add a taxi" />
-            </form>
-            Skupna vsota dobickov: {{$storage.taxiSum - $storage.y}} <br>
-        </div>
-    </div>
-</div>
--->
-
-
 <div ng-controller="TaxiesController" class="md-padding" style="text-align: center;">
     <img src="/img/logo/taxi.png" style="width: 200px">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <md-button aria-label="Go Back">
-            Go Back
-            </md-button>
-            <md-truncate style="position: absolute; left: 90px; right: 170px; top: 20px; bottom: 13px;">Skupna vsota dobickov: {{gains}}</md-truncate>
+            <md-truncate style="position: absolute; left: 90px; right: 170px; top: 21px; bottom: 13px;">Skupna vsota dobickov: {{gains}}</md-truncate>
             <span flex></span>
             <md-button class="md-raised" ng-disabled="-1>=gains" ng-click="addTaxi()">Add a taxi</md-button>
         </div>
     </md-toolbar>
-    
-    
     <div ng-init="getTaxies();">
-            
     </div>
 </div> 
 
