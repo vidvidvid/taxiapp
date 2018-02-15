@@ -33,13 +33,13 @@ angular
         $scope.addTaxi = function(){
             var taxi = {photo_url: '', number: 0, history: [purchase]};
             var photo, number;
-            $http.get('https://api.unsplash.com/photos/random?client_id=7b8105b594859445adc64d0dfe73fc9282dda72dfc283476dd166899a441df10&query=taxi').then(function(response){ //make a get req from this address
+            dataFactory.getPhoto().then(function(response){ //make a get req from this address
                 photo = response.data;
                 taxi.photo_url = photo.urls.small;
-                $http.get('/api/taxies').then(function(response){ //get the length 
+                dataFactory.getTaxies().then(function(response){ //get the length 
                     number = response.data.length+1; //first starts at 0
                     taxi.name = "Taxi nr. "+ number;
-                    $http.post('/api/taxies/', taxi).then(function(response){ 
+                    dataFactory.addTaxi(taxi).then(function(response){ 
                         $route.reload();
                     });
                 });
@@ -85,7 +85,7 @@ angular
         $scope.updateRent = function(taxi, id, seconds){
             taxi.available = true;
             taxi.history[0].price= calculatePrice(seconds);
-            $http.put('/api/taxies/'+id, taxi).then(function(response){ 
+            dataFactory.updateTaxi(id, taxi).then(function(response){ 
                 window.location.href='#!';
             });
         }
@@ -95,7 +95,7 @@ angular
             console.log(timeSpent(taxi))
             $scope.updateRent(taxi, id, timeSpent(taxi));
             taxi.history.unshift(cancel);
-            $http.put('/api/taxies/'+id, taxi).then(function(response){ 
+            dataFactory.updateTaxi(id, taxi).then(function(response){ 
                 window.location.href='#!';
                 location.reload();
             });

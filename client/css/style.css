@@ -53,3 +53,15 @@
 #taxiIcon {
   font-size: 150px;
 }
+
+#sum {
+  position: absolute; 
+  left: 0px; 
+  right: 0px; 
+  top: 21px; 
+  bottom: 13px;
+}
+
+#logo {
+  width: 200px;
+}

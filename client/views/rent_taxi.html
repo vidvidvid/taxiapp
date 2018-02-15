@@ -10,7 +10,7 @@
                 <div layout="row">
                 <md-input-container>
                     <label>Items</label>
-                    <md-select ng-model="selectedItem" md-selected-text="getSelectedText()" ng-required="">
+                    <md-select ng-model="selectedItem" md-selected-text="getSelectedText()" ng-required="true">
                     <md-optgroup label="items">
                         <md-option ng-value="item" ng-repeat="item in items">{{item}}</md-option>
                     </md-optgroup>
@@ -22,22 +22,22 @@
             <div ng-show="selectedItem==='Oseba'">
                 <md-input-container class="md-icon-float md-block form-group" md-no-float="">
                     <label>Ime</label>
-                    <input class="form-control" ng-model="rentCtrl.rent.name" type="text" ng-required="{{selectedItem=='Oseba' ? true : false}}">
+                    <input ng-model="rentCtrl.rent.name" type="text" ng-required="{{selectedItem=='Oseba' ? true : false}}">
                 </md-input-container>
                 <md-input-container class="md-icon-float md-block form-group" md-no-float="">
                     <label>Priimek</label>
-                    <input class="form-control" ng-model="rentCtrl.rent.surname" type="text" ng-required="{{selectedItem=='Oseba' ? true : false}}">
+                    <input ng-model="rentCtrl.rent.surname" type="text" ng-required="{{selectedItem=='Oseba' ? true : false}}">
                 </md-input-container>
             </div>
             <div ng-show="selectedItem==='Podjetje'">
                 <md-input-container class="md-icon-float md-block form-group" md-no-float="">
                     <label>Podjetje</label>
-                    <input class="form-control" ng-model="rentCtrl.rent.company" type="text" ng-required="{{selectedItem=='Podjetje' ? true : false}}">
+                    <input ng-model="rentCtrl.rent.company" type="text" ng-required="{{selectedItem=='Podjetje' ? true : false}}">
                 </md-input-container>
             </div>
             <md-input-container class="md-icon-float md-block form-group" md-no-float="">
                 <label>Dolzina (v sekundah)</label>
-                <input required="true" class="form-control" ng-model="rentCtrl.rent.length" type="number">
+                <input required="true" ng-model="rentCtrl.rent.length" type="number">
             </md-input-container>
             <md-button type="submit" class="btn btn-primary">Submit</md-button>
         </div>

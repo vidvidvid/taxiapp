@@ -7,7 +7,7 @@ angular
         if ($scope.selectedItem !== undefined) {
           return $scope.selectedItem;
         } else {
-          return "Oseba ali podjetje?";
+          return 'Oseba ali podjetje?'
         }
       };
     });

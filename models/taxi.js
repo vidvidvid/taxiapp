@@ -6,7 +6,7 @@ var taxiSchema = mongoose.Schema({
         type: Number,
         require: true,
         default: function(){
-            return Math.floor(Math.random()*18+1990);
+            return Math.floor(Math.random()*13+1995);
         }
     },
     max_p: {
