@@ -97,6 +97,7 @@ angular
             taxi.history.unshift(cancel);
             $http.put('/api/taxies/'+id, taxi).then(function(response){ 
                 window.location.href='#!';
+                location.reload();
             });
         }
 

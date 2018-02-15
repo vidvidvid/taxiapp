@@ -3,7 +3,6 @@ angular
     .controller('RentController', ['$scope', '$http', '$location', '$routeParams', '$route', function($scope, $http, $location, $routeParams, $route){
         console.log('RentController loaded')
         var vm = this;
-        var cancel = {name: 'Preklic', price: -500}
         
         vm.rent = {date: Date.now()};
         vm.rentTaxi = rentTaxi;
@@ -15,6 +14,7 @@ angular
             var id = $routeParams.id;
             $http.put('/api/taxies/'+id, taxi).then(function(response){
                 window.location.href='#!'; 
+                location.reload();
             });
         }
 
