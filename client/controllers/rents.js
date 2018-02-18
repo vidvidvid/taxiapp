@@ -9,12 +9,14 @@ angular
         vm.infoPrice = infoPrice;
 
         function rentTaxi (taxi) {
-            taxi.history.unshift(vm.rent);
-            taxi.available = false;
+            var rent = vm.rent;
+            rent.price = infoPrice(rent.length);
+            console.log(rent);
+            taxi.history.unshift(rent);
             var id = $routeParams.id;
             $http.put('/api/taxies/'+id, taxi).then(function(response){
                 window.location.href='#!'; 
-                location.reload();
+                //location.reload();
             });
         }
 
