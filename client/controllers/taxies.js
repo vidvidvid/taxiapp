@@ -6,57 +6,42 @@ angular
         $scope.taxies = [];
         $scope.taxi = {};
         $scope.taxi.history = [];
-        
-        var purchase = {name: 'Nakup', price: -100}
-        calculatePrice = (seconds) => {
-            if(seconds>300) return 300*5 + (seconds-300)*7.5;
-            return seconds*5;
-        }
 
-        $scope.getTaxies = function(){
+        $scope.getTaxies = () => {
             //console.log('X')
             dataFactory.getTaxies().then(function(response){ //make a get req from this address
                 $scope.taxies = response.data; 
-                getSumOfAll();
-                //$interval(getSumOfAll, 2000);
             });
         }
 
-        $scope.getTaxi = function(){
+        $scope.getTaxi = () => {
             var id = $routeParams.id;
             dataFactory.getTaxi(id).then(function(response){ 
                 $scope.taxi = response.data; //to moram uporabit, da dobim taxi
             });
         }
 
-        $scope.removeTaxi = function(id){
+        $scope.removeTaxi = (id) => {
             dataFactory.removeTaxi(id).then(function(response){ 
-                window.location.href='#!'; 
+                //window.location.href='#!'; 
             });
         }
 
-        $scope.updateRent = function(taxi, id, seconds){
-            taxi.available = true;
-            taxi.history[0].price= calculatePrice(seconds);
-            dataFactory.updateTaxi(id, taxi).then(function(response){ 
-                window.location.href='#!';
-            });
+        $scope.getTotal = (taxi) => {
+            var total = 0;
+            for(var i = 0; i < taxi.history.length; i++){ // deluje tudi z $scope.taxi.history.length
+                var rent = taxi.history[i];
+                if(rent.price) total += rent.price;
+            }
+            return total;
         }
-
-        $scope.cancelTaxi = function(taxi, id){
+        
+        $scope.cancelTaxi = (taxi, id) => {
             taxi.available = true;
-            console.log(timeSpent(taxi))
-            $scope.updateRent(taxi, id, timeSpent(taxi));
             taxi.history.unshift(cancel);
             dataFactory.updateTaxi(id, taxi).then(function(response){ 
-                window.location.href='#!';
-                //location.reload();
             });
-        }
-
-        var sumRented = 0;
-        var sumAll, curProf;
-        
+        }  
     }]);
 
     

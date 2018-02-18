@@ -1,6 +1,6 @@
 angular
     .module('myApp')
-    .controller('RentController', ['$scope', '$http', '$location', '$routeParams', '$route', '$timeout', function($scope, $http, $location, $routeParams, $route, $timeout){
+    .controller('RentController', ['$scope', '$http', '$location', '$routeParams', '$route', function($scope, $http, $location, $routeParams, $route){
         console.log('RentController loaded')
         var vm = this;
         
@@ -11,16 +11,11 @@ angular
         function rentTaxi (taxi) {
             var rent = vm.rent;
             rent.price = infoPrice(rent.length);
-            console.log(rent);
+            taxi.available = false;
             taxi.history.unshift(rent);
             var id = $routeParams.id;
             $http.put('/api/taxies/'+id, taxi).then(function(response){
                 window.location.href='#!';
-                $timeout(function () {
-                    // 0 ms delay to reload the page.
-                    $route.reload();
-                }, 0);
-                //location.reload();
             });
         }
 

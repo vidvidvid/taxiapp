@@ -13,7 +13,7 @@ angular
             return seconds*5;
         }
 
-        $scope.getTaxies = function(){
+        $scope.getTaxies = () => {
             //console.log('X')
             dataFactory.getTaxies().then(function(response){ //make a get req from this address
                 $scope.taxies = response.data; 
@@ -22,7 +22,7 @@ angular
             });
         }
 
-        $scope.addTaxi = function(){
+        $scope.addTaxi = () => {
             var taxi = {photo_url: '', number: 0, history: []};
             var photo, number;
             dataFactory.getPhoto().then(function(response){ //make a get req from this address
@@ -38,7 +38,7 @@ angular
             });            
         }
 
-        $scope.buyTaxi = function(){
+        $scope.buyTaxi = () => {
             var taxi = {photo_url: '', number: 0, history: [purchase]};
             var photo, number;
             dataFactory.getPhoto().then(function(response){ //make a get req from this address
@@ -55,7 +55,7 @@ angular
             });            
         }
 
-        $scope.getTotal = function(taxi) {
+        $scope.getTotal = (taxi) =>  {
             var total = 0;
             for(var i = 0; i < taxi.history.length; i++){ // deluje tudi z $scope.taxi.history.length
                 var rent = taxi.history[i];
@@ -64,7 +64,7 @@ angular
             return total;
         }
 
-        $scope.getTotalAll = function(taxies){
+        getTotalAll = (taxies) => {
             var total = 0;
             //console.log(taxies.length)
             for(var i = 0; i < taxies.length; i++){
@@ -82,24 +82,13 @@ angular
         var sumRented = 0;
         var sumAll, curProf;
 
-        var getSumOfAll = function(){
-            curProf=0;
-            //get sum of all taxies
-            sumAll = $scope.getTotalAll($scope.taxies);
-            //get the current earnings of the active taxies
-            for(var i = 0; i<$scope.taxies.length; i++){
-                if(!$scope.taxies[i].available && timeSpent($scope.taxies[i])>=$scope.taxies[i].history[0].length){
-                    $scope.updateRent($scope.taxies[i], $scope.taxies[i]._id, $scope.taxies[i].history[0].length);
-                }
-                if(!$scope.taxies[i].available){
-                    curProf += $scope.getCurrentProfit($scope.taxies[i]);
-                }
-            }
-
-            console.log($scope.taxies[0].history[0])
-                       
-            //show current gains
-            $scope.gains = curProf+sumAll;
+        var getSumOfAll = () => {
+            dataFactory.getTaxies().then(function(response){ //make a get req from this address
+                taxies = response.data; 
+                curProf=0;
+                $scope.gains = getTotalAll(taxies);
+            });
+            console.log('Getting sum of all taxies');
         }
 
         $interval(getSumOfAll, 2000);
