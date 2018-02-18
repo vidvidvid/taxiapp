@@ -1,4 +1,4 @@
-<div flex-gt-sm="50" flex ng-init="getTaxi()" class="md-padding">
+<div flex ng-init="getTaxi()" class="md-padding">
     <md-toolbar layout="row" class="md-hue-3">
         <div class="md-toolbar-tools">
             <span id="name">{{taxi.name}}</span>
@@ -6,10 +6,10 @@
     </md-toolbar>
     <br>
     <div layout="row">
-        <div flex-gt-xs="50">
-            <img ng-src="{{taxi.photo_url}}">
+        <div flex-gt-xs="50" >
+            <img id="taxiphoto" ng-src="{{taxi.photo_url}}">
         </div>
-        <div>
+        <div flex-gt-xs="50">
             <md-content>
                 <md-list flex>
                     <md-subheader class="md-no-sticky">Skupna vsota dobickov: {{getTotal(taxi) || []}}</md-subheader>

@@ -32,7 +32,7 @@
             <div ng-show="selectedItem==='Podjetje'">
                 <md-input-container class="md-icon-float md-block form-group" md-no-float="">
                     <label>Podjetje</label>
-                    <input ng-model="rentCtrl.rent.company" type="text" ng-required="{{selectedItem=='Podjetje' ? true : false}}">
+                    <input ng-model="rentCtrl.rent.company" type="text" ng-required="{{selectedItem=='Podjetje' ? true : null}}">
                 </md-input-container>
             </div>
             <md-input-container class="md-icon-float md-block form-group" md-no-float="">

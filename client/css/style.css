@@ -65,3 +65,12 @@
 #logo {
   width: 200px;
 }
+
+#taxiphoto {
+  width: auto;
+  max-width: 100%;
+}
+img.resize {
+  width:540px; /* you can use % */
+  height:300px;
+}

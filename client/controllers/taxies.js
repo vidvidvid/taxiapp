@@ -15,7 +15,6 @@ angular
 
         $scope.getTaxies = function(){
             //console.log('X')
-            var x = 0;
             dataFactory.getTaxies().then(function(response){ //make a get req from this address
                 $scope.taxies = response.data; 
                 getSumOfAll();
@@ -31,6 +30,23 @@ angular
         }
 
         $scope.addTaxi = function(){
+            var taxi = {photo_url: '', number: 0, history: []};
+            var photo, number;
+            dataFactory.getPhoto().then(function(response){ //make a get req from this address
+                photo = response.data;
+                taxi.photo_url = photo.urls.small;
+                dataFactory.getTaxies().then(function(response){ //get the length 
+                    number = response.data.length+1; //first starts at 0
+                    taxi.name = "Taxi nr. "+ number;
+                    dataFactory.addTaxi(taxi).then(function(response){ 
+                        $route.reload();
+                    });
+                });
+                
+            });            
+        }
+
+        $scope.buyTaxi = function(){
             var taxi = {photo_url: '', number: 0, history: [purchase]};
             var photo, number;
             dataFactory.getPhoto().then(function(response){ //make a get req from this address

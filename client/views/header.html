@@ -5,7 +5,8 @@
             <div class="md-toolbar-tools">
                 <md-truncate id="sum">Skupna vsota dobickov: {{gains}}</md-truncate>
                 <span flex></span>
-                <md-button class="md-raised" ng-disabled="-1>=gains" ng-click="addTaxi()">Nakup taksija</md-button>
+                <md-button class="md-raised" ng-disabled="0>=gains" ng-click="buyTaxi()">Nakup taksija</md-button>
+                <md-button class="md-raised" ng-click="addTaxi()">Dodaj taksi</md-button>
             </div>
         </md-toolbar>
     </div>

@@ -6,7 +6,7 @@
             <form ng-hide="taxi.available"  ng-submit="cancelTaxi(taxi, taxi._id)">    
                 <md-button type="submit">Preklici</md-button><!-- show if !taxi.available, torej cancel ce je rentan atm-->
             </form>
-            <img ng-src="{{taxi.photo_url}}" class="md-card-image" alt="taxi.name">
+            <img ng-src="{{taxi.photo_url}}" class="md-card-image" alt="taxi.name" style="height:250px">
             <md-card-title>
                 <md-card-title-text>
                 <span class="md-headline">{{taxi.name}}</span>

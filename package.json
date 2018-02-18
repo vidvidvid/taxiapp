@@ -11,7 +11,8 @@
     "body-parser": "*",
     "express": "*",
     "mongoose": "*",
-    "uninstall": "0.0.0"
+    "uninstall": "0.0.0",
+    "reload": "*"
   },
   "author": "Vid Topolovec",
   "license": "ISC"
