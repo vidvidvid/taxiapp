@@ -43,7 +43,7 @@
   color: red; }
 
 .md-toolbar-tools {
-  background-color: #5a5959;
+  background-color: #fbc02d;
 }
 
 #name {
@@ -55,6 +55,7 @@
 }
 
 #sum {
+  color: black;
   position: absolute; 
   left: 0px; 
   right: 0px; 
@@ -73,4 +74,17 @@
 img.resize {
   width:540px; /* you can use % */
   height:300px;
+}
+
+.md-button {
+  color :black;
+}
+
+.md-button:not([disabled]):hover {
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+.md-button[disabled] {
+  color : rgba(0, 0, 0, 0.26);
+  background-color: transparent;
 }
