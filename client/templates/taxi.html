@@ -1,0 +1,19 @@
+<md-card style="width: 300px;">
+    {{taxiCard.taxi._id}}
+    <md-button ng-show="taxiCard.taxi.available" ng-href="#!/taxies/rent/{{taxiCard.taxi._id}}">Najem</md-button> <!-- show if taxi.available -->
+    <md-button ng-hide="taxiCard.taxi.available" ng-click="taxiCard.cancelTaxi(taxiCard.taxi, taxiCard.taxi._id)" type="submit">Preklici</md-button><!-- show if !taxi.available, torej cancel ce je rentan atm-->
+    <img ng-src="{{taxiCard.taxi.photo_url}}" class="md-card-image" alt="taxiCard.taxi.name" style="height:250px">
+    <md-card-title>
+        <md-card-title-text>
+        <span class="md-headline">{{taxiCard.taxi.name}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        Leto izdelave: {{taxiCard.taxi.year}} <br>
+        Max potnikov: {{taxiCard.taxi.max_p}} <br>
+        Max hitrost: {{taxiCard.taxi.max_s}} <br>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-href="#!/taxies/details/{{taxiCard.taxi._id}}">Podrobnosti</md-button>
+    </md-card-actions>
+</md-card>

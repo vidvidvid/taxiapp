@@ -1,24 +1,8 @@
 <div class="md-padding" layout="row" ng-init="getTaxies()" layout-wrap>
     <div ng-repeat="taxi in taxies">
         <a href="#!" ng-click="removeTaxi(taxi._id)">Delete</a>
-        <md-card style="width: 300px;">
-            <md-button ng-show="taxi.available" ng-href="#!/taxies/rent/{{taxi._id}}">Najem</md-button> <!-- show if taxi.available -->
-            <md-button ng-hide="taxi.available" ng-click="cancelTaxi(taxi, taxi._id)" type="submit">Preklici</md-button><!-- show if !taxi.available, torej cancel ce je rentan atm-->
-            <img ng-src="{{taxi.photo_url}}" class="md-card-image" alt="taxi.name" style="height:250px">
-            <md-card-title>
-                <md-card-title-text>
-                <span class="md-headline">{{taxi.name}}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                Leto izdelave: {{taxi.year}} <br>
-                Max potnikov: {{taxi.max_p}} <br>
-                Max hitrost: {{taxi.max_s}} <br>
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button ng-href="#!/taxies/details/{{taxi._id}}">Podrobnosti</md-button>
-            </md-card-actions>
-        </md-card>   
+        <taxi-card  taxi="taxi"> 
+                   </taxi-card>   
     </div>
 </div>
  
