@@ -1,6 +1,6 @@
 <md-card style="width: 300px;">
     <md-button ng-show="taxiCard.taxi.available" ng-href="#!/taxies/rent/{{taxiCard.taxi._id}}">Najem</md-button> <!-- show if taxi.available -->
-    <md-button ng-hide="taxiCard.taxi.available" ng-click="taxiCard.cancelTaxi(taxiCard.taxi, taxiCard.taxi._id)" type="submit">Preklici</md-button><!-- show if !taxi.available, torej cancel ce je rentan atm-->
+    <md-button ng-hide="taxiCard.taxi.available" ng-click="taxiCard.cancelTaxi(taxiCard.taxi, taxiCard.taxi._id)" type="submit">Preklic najema</md-button><!-- show if !taxi.available, torej cancel ce je rentan atm-->
     <img ng-src="{{taxiCard.taxi.photo_url}}" class="md-card-image" alt="taxiCard.taxi.name" style="height:250px">
     <md-card-title>
         <md-card-title-text>

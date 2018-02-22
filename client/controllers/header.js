@@ -73,23 +73,42 @@ angular
             return total;
         }
 
-        timeSpent = (taxi) => {
-            return Math.floor((Date.now()-taxi.history[0].date)/1000)
-        }
-
-        var sumRented = 0;
-        var sumAll, curProf;
-
         var getSumOfAll = () => {
             dataFactory.getTaxies().then(function(response){  //tu moram nardit se, da bo preverjal, kako dolgo so ze rentani
-                taxies = response.data; 
-                curProf=0;
+                taxies = response.data;
                 $scope.gains = getTotalAll(taxies);
+                var taxi = {};
+                for(var i = 0; i<taxies.length; i++){
+                    //console.log(i + ': Time spent: ' + timeSpent(taxies[i]) + 'Dolzina zadnje izposoje: ' + length(taxies[i]))
+                    //console.log(taxies[i].history)
+                    if(check(taxies[i])){
+                        if(timeSpent(taxies[i])>length(taxies[i])){
+                            taxi = taxies[i];
+                            taxi.available = true;
+                            dataFactory.updateTaxi(taxi._id, taxi).then(function(response){ 
+                            });
+                        }
+                    }
+                }
             });
             console.log('Getting sum of all taxies');
         }
 
-        $interval(getSumOfAll, 2000);
+        check = (taxi) => {
+            return !(taxi.history.length === 0 || taxi.history[0].name === 'Preklici' || taxi.history[0].name === 'Nakup')
+        }
+
+        
+        length = (taxi) => {
+            if(taxi.history[0].length) return taxi.history[0].length;
+            return null;
+        }
+
+        timeSpent = (taxi) => {
+            if(taxi.history[0].date) return Math.floor((Date.now()-taxi.history[0].date)/1000);
+        }
+
+        $interval(getSumOfAll, 5000);
     }]);
 
     

@@ -6,10 +6,11 @@ angular
         $scope.taxies = [];
         $scope.taxi = {};
         $scope.taxi.history = [];
+        taxi = {}
+        taxi.history = [];
 
         $scope.getTaxies = () => {
-            //console.log('X')
-            dataFactory.getTaxies().then(function(response){ //make a get req from this address
+            dataFactory.getTaxies().then(function(response){
                 $scope.taxies = response.data; 
             });
         }
@@ -17,19 +18,18 @@ angular
         $scope.getTaxi = () => {
             var id = $routeParams.id;
             dataFactory.getTaxi(id).then(function(response){ 
-                $scope.taxi = response.data; //to moram uporabit, da dobim taxi
+                $scope.taxi = response.data;
             });
         }
 
         $scope.removeTaxi = (id) => {
             dataFactory.removeTaxi(id).then(function(response){ 
-                //window.location.href='#!'; 
             });
         }
 
         $scope.getTotal = (taxi) => {
             var total = 0;
-            for(var i = 0; i < taxi.history.length; i++){ // deluje tudi z $scope.taxi.history.length
+            for(var i = 0; i < taxi.history.length; i++){ 
                 var rent = taxi.history[i];
                 if(rent.price) total += rent.price;
             }
@@ -42,5 +42,13 @@ angular
             taxi.history.unshift(cancel);
             dataFactory.updateTaxi(id, taxi).then(function(response){ 
             });
-        } 
+        }
+
+        var getTaxiesUpdated = () => {
+            console.log('Checking rent length')
+            dataFactory.getTaxies().then(function(response){ 
+                $scope.taxies = response.data;
+            });
+        }
+        $interval(getTaxiesUpdated, 2000);
     }]);

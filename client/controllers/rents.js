@@ -4,12 +4,13 @@ angular
         console.log('RentController loaded')
         var vm = this;
         
-        vm.rent = {date: Date.now()};
+        vm.rent = {};
         vm.rentTaxi = rentTaxi;
         vm.infoPrice = infoPrice;
 
         function rentTaxi (taxi) {
             var rent = vm.rent;
+            rent.date = Date.now();
             rent.price = infoPrice(rent.length);
             taxi.available = false;
             taxi.history.unshift(rent);

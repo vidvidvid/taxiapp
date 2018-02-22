@@ -15,7 +15,6 @@
                     <md-subheader class="md-no-sticky">Skupna vsota dobickov: {{getTotal(taxi) || []}}</md-subheader>
                     <md-subheader class="md-no-sticky">Zgodovina najemov</md-subheader>
                     <md-list-item class="md-3-line" ng-repeat="rent in taxi.history">
-                        
                         <md-icon ng-show="rent.company" class="md-avatar ">work</md-icon>
                         <md-icon ng-show="rent.name!='Preklic' && rent.name!='Nakup' && rent.name" class="md-avatar">person</md-icon>
                         <md-icon ng-show="rent.name==='Preklic'" class="md-avatar">cancel</md-icon>
@@ -29,7 +28,7 @@
                                 <h3>{{rent.company}}</h3>
                             </div>
                             <div ng-show="rent.date">
-                                <h4>{{rent.date | date:'MM/dd/yyyy'}}</h4>
+                                <h4>{{rent.date | date:'MM/dd/yyyy hh:mm:ss'}}</h4>
                             </div>
                             <div ng-show="rent.length">
                                 <p>Dolzina najema: {{rent.length}}</p>
