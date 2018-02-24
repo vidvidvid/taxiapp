@@ -2,11 +2,11 @@ angular
     .module('myApp')
     .component('taxiCard', {
         templateUrl: '/templates/taxi.html',
-        bindings: { 
-            taxi: '=' ,
+        bindings: {
+            taxi: '=',
         },
         controllerAs: 'taxiCard',
-        controller: function(taxiesService) {
+        controller: function (taxiesService) {
             this.cancelTaxi = (taxi, id) => {
                 taxiesService.cancelTaxi(taxi, id);
             }

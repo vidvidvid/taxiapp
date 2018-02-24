@@ -1,19 +1,22 @@
 <md-card style="width: 300px;">
-    <md-button ng-disabled="!taxiCard.taxi.drivable" ng-show="taxiCard.taxi.available" ng-href="#!/taxies/rent/{{taxiCard.taxi._id}}">Najem</md-button> <!-- show if taxi.available -->
-    <md-button ng-disabled="!taxiCard.taxi.drivable" ng-hide="taxiCard.taxi.available" ng-click="taxiCard.cancelTaxi(taxiCard.taxi, taxiCard.taxi._id)">Preklic najema</md-button><!-- show if !taxi.available, torej cancel ce je rentan atm-->
+    <md-button ng-disabled="!taxiCard.taxi.drivable" ng-show="taxiCard.taxi.available" ng-href="#!/taxies/rent/{{taxiCard.taxi._id}}">Najem</md-button>
+    <!-- show if taxi.available -->
+    <md-button ng-disabled="!taxiCard.taxi.drivable" ng-hide="taxiCard.taxi.available" ng-click="taxiCard.cancelTaxi(taxiCard.taxi, taxiCard.taxi._id)">Preklic najema</md-button>
+    <!-- show if !taxi.available, torej cancel ce je rentan atm-->
     <md-button ng-disabled="!taxiCard.taxi.drivable" ng-click="taxiCard.disableTaxi(taxiCard.taxi, taxiCard.taxi._id)">Odpis taksija</md-button>
     <img ng-src="{{taxiCard.taxi.photo_url}}" class="md-card-image" alt="taxiCard.taxi.name" style="height:250px">
     <md-card-title>
         <md-card-title-text>
-        <span class="md-headline">{{taxiCard.taxi.name}}</span>
+            <span class="md-headline">{{taxiCard.taxi.name}}</span>
         </md-card-title-text>
     </md-card-title>
     <md-card-content>
-        Leto izdelave: {{taxiCard.taxi.year}} <br>
-        Max potnikov: {{taxiCard.taxi.max_p}} <br>
-        Max hitrost: {{taxiCard.taxi.max_s}} <br>
+        Leto izdelave: {{taxiCard.taxi.year}}
+        <br> Max potnikov: {{taxiCard.taxi.max_p}}
+        <br> Max hitrost: {{taxiCard.taxi.max_s}}
+        <br>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
         <md-button ng-href="#!/taxies/details/{{taxiCard.taxi._id}}">Podrobnosti</md-button>
     </md-card-actions>
-</md-card> 
+</md-card>

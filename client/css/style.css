@@ -8,10 +8,10 @@
 
 #sum {
   color: black;
-  position: absolute; 
-  left: 0px; 
-  right: 0px; 
-  top: 21px; 
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 21px;
   bottom: 13px;
 }
 
@@ -23,13 +23,15 @@
   width: auto;
   max-width: 100%;
 }
+
 img.resize {
-  width:540px; /* you can use % */
-  height:300px;
+  width: 540px;
+  /* you can use % */
+  height: 300px;
 }
 
 .md-button {
-  color :black;
+  color: black;
 }
 
 .md-button:not([disabled]):hover {
@@ -37,6 +39,6 @@ img.resize {
 }
 
 .md-button[disabled] {
-  color : rgba(0, 0, 0, 0.26);
+  color: rgba(0, 0, 0, 0.26);
   background-color: transparent;
 }
