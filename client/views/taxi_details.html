@@ -1,15 +1,16 @@
 <div flex ng-init="getTaxi()" class="md-padding">
     <md-toolbar layout="row" class="md-hue-3">
         <div class="md-toolbar-tools">
-            <span id="name">{{taxi.name}}</span>
+            <span id="name">{{taxi.name}}</span> 
+            <md-button ng-disabled="!taxi.drivable" ng-click="disableTaxi(taxi, taxi._id)">Odpis taksija</md-button>
         </div>
     </md-toolbar>
     <br>
     <div layout="row">
-        <div flex-gt-xs="50" >
+        <div flex-gt-xs="33" >
             <img id="taxiphoto" ng-src="{{taxi.photo_url}}">
         </div>
-        <div flex-gt-xs="50">
+        <div flex-gt-xs="33">
             <md-content>
                 <md-list flex>
                     <md-subheader class="md-no-sticky">Skupna vsota dobickov: {{getTotal(taxi) || []}}</md-subheader>
@@ -43,6 +44,9 @@
                     </md-list-item>
                 </md-list>
             </md-content>
+        </div>
+        <div flex-gt-xs="33" >
+            <img id="taxiphoto" ng-src="{{taxi.photo_url}}">
         </div>
     </div>            
 </div>

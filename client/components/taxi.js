@@ -10,5 +10,9 @@ angular
             this.cancelTaxi = (taxi, id) => {
                 taxiesService.cancelTaxi(taxi, id);
             }
+
+            this.disableTaxi = (taxi, id) => {
+                taxiesService.disableTaxi(taxi, id);
+            }
         }
     })

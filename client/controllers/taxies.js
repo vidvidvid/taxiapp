@@ -35,6 +35,14 @@ angular
             }
             return total;
         }
+
+        $scope.disableTaxi = (taxi, id) => {
+            taxi.drivable = false;
+            dataFactory.updateTaxi(id, taxi).then(function(response){
+                $scope.taxi = response.data;
+                $route.reload();
+            })
+        }
         
         $scope.cancelTaxi = (taxi, id) => {
             console.log('cancelling..')
@@ -44,11 +52,11 @@ angular
             });
         }
 
-        var getTaxiesUpdated = () => {
+        var updateTaxies = () => {
             console.log('Checking rent length')
             dataFactory.getTaxies().then(function(response){ 
                 $scope.taxies = response.data;
             });
         }
-        $interval(getTaxiesUpdated, 2000);
+        $interval(updateTaxies, 2000);
     }]);

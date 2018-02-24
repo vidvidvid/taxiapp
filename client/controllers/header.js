@@ -54,33 +54,79 @@ angular
             });            
         }
 
-        $scope.getTotal = (taxi) =>  {
-            var total = 0;
-            for(var i = 0; i < taxi.history.length; i++){ 
-                var rent = taxi.history[i];
-                if(rent.price) total += rent.price;
-            }
-            return total;
-        }
 
         getTotalAll = (taxies) => {
             var total = 0;
             for(var i = 0; i < taxies.length; i++){
                 for(var j = 0; j < taxies[i].history.length; j++){
-                    if(taxies[i].history[j].price) total += taxies[i].history[j].price;
+                    if(taxies[i].history[j].price>0) total += taxies[i].history[j].price;
                 }
             }
             return total;
         }
 
-        var getSumOfAll = () => {
-            dataFactory.getTaxies().then(function(response){  //tu moram nardit se, da bo preverjal, kako dolgo so ze rentani
+        currentlyRented = (taxies) => {
+            var count = 0;
+            for(var i = 0; i<taxies.length; i++){
+                if(!taxies[i].available) count++;
+            }
+            return count;
+        }
+
+        lastHourSumAll = (taxies) => {
+            var sum = 0;
+            for(var i = 0; i<taxies.length; i++){
+                sum+=lastHourSumOne(taxies[i]);
+            }
+            return Math.round(sum/60);
+        }
+
+        lastHourSumOne = (taxi) => {
+            var sum = 0;
+            var timeNow = Date.now();
+            if(taxi.history.length>0){
+                for(var i = 0; i<taxi.history.length; i++){
+                    if(Math.floor((Date.now()-taxi.history[i].date)/1000)<=3600 && taxi.history[i].name!=='Nakup') sum+=taxi.history[i].price;
+                }
+                return sum;
+            }
+            return 0;
+        }
+
+        mostRented = (taxies) => {
+            var most = 0;
+            var times;
+            times = timesRented(taxies[0]);
+            for(var i = 1; i<taxies.length; i++){
+                if(timesRented(taxies[i])>times){
+                    times = timesRented(taxies[i]);
+                    most = i;
+                }
+                
+            }
+            return taxies[most].name;
+        }
+
+        timesRented = (taxi) => {
+            var count = 0;
+            if(taxi.history.length){
+                for(var i = 0; i<taxi.history.length; i++){
+                    if(taxi.history[i].name!='Nakup' && taxi.history[i].name!='Preklic') count++;
+                }
+                return count;
+            }
+            return 0;
+        }
+
+        getSumOfAll = () => {
+            dataFactory.getTaxies().then(function(response){
                 taxies = response.data;
                 $scope.gains = getTotalAll(taxies);
+                $scope.currentlyRented = currentlyRented(taxies);
+                $scope.lastHourSumAll = lastHourSumAll(taxies);
+                $scope.mostRented = mostRented(taxies);
                 var taxi = {};
                 for(var i = 0; i<taxies.length; i++){
-                    //console.log(i + ': Time spent: ' + timeSpent(taxies[i]) + 'Dolzina zadnje izposoje: ' + length(taxies[i]))
-                    //console.log(taxies[i].history)
                     if(check(taxies[i])){
                         if(timeSpent(taxies[i])>length(taxies[i])){
                             taxi = taxies[i];
@@ -108,7 +154,7 @@ angular
             if(taxi.history[0].date) return Math.floor((Date.now()-taxi.history[0].date)/1000);
         }
 
-        $interval(getSumOfAll, 5000);
+        $interval(getSumOfAll, 10000);
     }]);
 
     

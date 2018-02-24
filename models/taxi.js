@@ -2,6 +2,11 @@ var mongoose = require('mongoose');
 
 //Shema za taksi
 var taxiSchema = mongoose.Schema({
+    drivable: {
+        type: Boolean,
+        require: true,
+        default: true
+    },
     year: {
         type: Number,
         require: true,
@@ -78,6 +83,7 @@ module.exports.addTaxi = function(taxi, callback){ //taxi = objekt iz forme
 module.exports.updateTaxi = function(id, taxi, options, callback){ //taxi = nov objekt iz forme
     var query = {_id: id};
     var update = {
+        drivable: taxi.drivable,
         year: taxi.year,
         max_p: taxi.max_p,
         max_s: taxi.max_s,

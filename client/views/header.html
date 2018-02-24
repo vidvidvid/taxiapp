@@ -1,14 +1,16 @@
 <div ng-controller="HeaderController" class="md-padding" style="text-align: center;">
     <div ng-init="getTaxies();">
-        <a href="#!"><img src="/img/logo/taxi.png" id="logo"></a>
+        <a href="#!"><img src="/img/logo/taxi.png" id="logo"></a> 
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <md-truncate id="sum">Skupna vsota dobickov: {{gains}}</md-truncate>
+                
                 <span flex></span>
                 <md-button class="md-cornered" ng-disabled="0>=gains" ng-click="buyTaxi()">Nakup taksija</md-button>
                 <md-button class="md-cornered" ng-click="addTaxi()">Dodaj taksi</md-button>
             </div>
         </md-toolbar>
+        Trenutno v najemu: {{currentlyRented}} | $/min v 60: {{lastHourSumAll}} | najveckrat najet: {{mostRented}}
     </div>
 </div> 
 
