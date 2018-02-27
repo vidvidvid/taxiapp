@@ -1,12 +1,19 @@
 angular
     .module('myApp')
-    .controller('RentController', ['$scope', '$http', '$location', '$routeParams', '$route', function ($scope, $http, $location, $routeParams, $route) {
+    .controller('RentController', ['$scope', '$location', '$routeParams', 'dataFactory', function ($scope, $http, $location, $routeParams, dataFactory) {
         console.log('RentController loaded')
         var vm = this;
 
         vm.rent = {};
         vm.rentTaxi = rentTaxi;
         vm.infoPrice = infoPrice;
+
+        $scope.getTaxi = () => {
+            var id = $routeParams.id;
+            dataFactory.getTaxi(id).then(function (response) {
+                $scope.taxi = response.data;
+            });
+        }
 
         function rentTaxi(taxi) {
             var rent = vm.rent;
@@ -15,7 +22,7 @@ angular
             taxi.available = false;
             taxi.history.unshift(rent);
             var id = $routeParams.id;
-            $http.put('/api/taxies/' + id, taxi).then(function (response) {
+            dataFactory.updateTaxi(id, taxi).then(function (response) {
                 window.location.href = '#!';
             });
         }

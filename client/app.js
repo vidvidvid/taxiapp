@@ -7,20 +7,12 @@ function config($routeProvider) {
             controller: 'TaxiesController',
             templateUrl: 'views/taxies.html'
         })
-        .when('/taxies', {
-            controller: 'TaxiesController',
-            templateUrl: 'views/taxies.html'
-        })
         .when('/taxies/details/:id', {
-            controller: 'TaxiesController',
+            controller: 'DetailsController',
             templateUrl: 'views/taxi_details.html'
         })
-        .when('/taxies/add', {
-            controller: 'TaxiesController',
-            templateUrl: 'views/add_taxi.html'
-        })
         .when('/taxies/rent/:id', {
-            controller: 'TaxiesController',
+            controller: 'RentController as rentCtrl',
             templateUrl: 'views/rent_taxi.html'
         })
         .otherwise({

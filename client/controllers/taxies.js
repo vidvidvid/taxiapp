@@ -1,6 +1,6 @@
 angular
     .module('myApp')
-    .controller('TaxiesController', ['$scope', '$location', '$routeParams', '$route', 'dataFactory', '$interval', '$filter', function ($scope, $location, $routeParams, $route, dataFactory, $interval, $filter) {
+    .controller('TaxiesController', ['$scope', '$route', 'dataFactory', '$interval', function ($scope, $route, dataFactory, $interval) {
         console.log('TaxiesController loaded')
         var cancel = {
             name: 'Preklic',
@@ -17,13 +17,6 @@ angular
                 $scope.taxies = response.data;
             });
             taxiesHighchart();
-        }
-
-        $scope.getTaxi = () => {
-            var id = $routeParams.id;
-            dataFactory.getTaxi(id).then(function (response) {
-                $scope.taxi = response.data;
-            });
         }
 
         $scope.removeTaxi = (id) => {
@@ -125,22 +118,22 @@ angular
         }
 
         getRentsArray = () => {
-            return new Promise(function(resolve, reject){
-                dataFactory.getTaxies().then(function (response){
+            return new Promise(function (resolve, reject) {
+                dataFactory.getTaxies().then(function (response) {
                     var rents = new Array(18);
                     rents.fill(0);
                     taxies = response.data;
                     var count, date, rentStart, point;
-                    var timeNow = Math.floor(Date.now()/60000);
+                    var timeNow = Math.floor(Date.now() / 60000);
                     var timeStart = timeNow - 180;
-    
+
                     //fill the rents array with data
-                    for(var i = 0; i < taxies.length; i++){
-                        for(var j = 0; j < taxies[i].history.length; j++){
-                            rentStart = Math.floor(taxies[i].history[j].date/60000);
-                            if(rentStart<=timeStart) break;
-                            if(taxies[i].history[j].name!='Nakup' && taxies[i].history[j].name!='Preklic'){
-                                point = Math.floor((timeNow-rentStart)/10);
+                    for (var i = 0; i < taxies.length; i++) {
+                        for (var j = 0; j < taxies[i].history.length; j++) {
+                            rentStart = Math.floor(taxies[i].history[j].date / 60000);
+                            if (rentStart <= timeStart) break;
+                            if (taxies[i].history[j].name != 'Nakup' && taxies[i].history[j].name != 'Preklic') {
+                                point = Math.floor((timeNow - rentStart) / 10);
                                 rents[point]++;
                             }
                         }
@@ -152,20 +145,20 @@ angular
         }
 
         taxiesHighchart = () => {
-            getRentsArray().then(function(array){
+            getRentsArray().then(function (array) {
                 var d = new Date();
                 Highcharts.chart('container', {
                     chart: {
                         type: 'column'
                     },
                     title: {
-                      text: 'Najem taksijev skozi čas'
+                        text: 'Najem taksijev skozi čas'
                     },
-                    
+
                     plotOptions: {
                         series: {
                             pointStart: d.setHours(d.getHours() - 2),
-                            pointInterval: 60*10000 // 10 min
+                            pointInterval: 60 * 10000 // 10 min
                         }
                     },
                     xAxis: {
@@ -177,11 +170,11 @@ angular
                         }
                     },
                     series: [{
-                      data: array
+                        data: array
                     }]
                 });
             })
         }
-        
+
         $interval(updateTaxies, 2000);
     }]);

@@ -1,6 +1,6 @@
 angular
     .module('myApp')
-    .controller('HeaderController', ['$scope', '$http', '$location', '$routeParams', '$route', 'dataFactory', '$interval', function ($scope, $http, $location, $routeParams, $route, dataFactory, $interval) {
+    .controller('HeaderController', ['$scope', '$route', 'dataFactory', '$interval', function ($scope, $route, dataFactory, $interval) {
         console.log('HeaderController loaded')
         var cancel = {
             name: 'Preklic',
@@ -109,6 +109,6 @@ angular
         timeSpent = (taxi) => {
             if (taxi.history[0].date) return Math.floor((Date.now() - taxi.history[0].date) / 1000);
         }
-        
+
         $interval(updateViewData, 10000);
     }]);
