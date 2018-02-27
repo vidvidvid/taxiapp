@@ -1,6 +1,6 @@
 angular
     .module('myApp')
-    .controller('TaxiesController', ['$scope', '$location', '$routeParams', '$route', 'dataFactory', '$interval', function ($scope, $location, $routeParams, $route, dataFactory, $interval) {
+    .controller('TaxiesController', ['$scope', '$location', '$routeParams', '$route', 'dataFactory', '$interval', '$filter', function ($scope, $location, $routeParams, $route, dataFactory, $interval, $filter) {
         console.log('TaxiesController loaded')
         var cancel = {
             name: 'Preklic',
@@ -16,6 +16,7 @@ angular
             dataFactory.getTaxies().then(function (response) {
                 $scope.taxies = response.data;
             });
+            taxiesHighchart();
         }
 
         $scope.getTaxi = () => {
@@ -144,6 +145,7 @@ angular
                             }
                         }
                     }
+                    rents.reverse();
                     resolve(rents);
                 })
             })
@@ -151,23 +153,35 @@ angular
 
         taxiesHighchart = () => {
             getRentsArray().then(function(array){
+                var d = new Date();
                 Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
                     title: {
                       text: 'Najem taksijev skozi čas'
                     },
-              
-                    xAxis: {
-                      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-                      ]
+                    
+                    plotOptions: {
+                        series: {
+                            pointStart: d.setHours(d.getHours() - 2),
+                            pointInterval: 60*10000 // 10 min
+                        }
                     },
-              
+                    xAxis: {
+                        type: 'datetime'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Število najemov'
+                        }
+                    },
                     series: [{
                       data: array
                     }]
                 });
             })
         }
-        taxiesHighchart();
+        
         $interval(updateTaxies, 2000);
     }]);
