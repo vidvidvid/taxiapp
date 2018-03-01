@@ -1,4 +1,5 @@
 <form ng-init="getTaxi()" ng-submit="rentCtrl.rentTaxi(taxi)">
+        {{taxi}}
     <h2>{{taxi.name}}</h2>
     <div ng-show="rentCtrl.rent.length">
         Informativni izracun cene: {{rentCtrl.infoPrice(rentCtrl.rent.length)}}

@@ -1,15 +1,15 @@
 angular
     .module('myApp')
-    .controller('RentController', ['$scope', '$location', '$routeParams', 'dataFactory', function ($scope, $http, $location, $routeParams, dataFactory) {
+    .controller('RentController', ['$scope', '$location', '$routeParams', 'dataFactory', function ($scope, $location, $routeParams, dataFactory) {
         console.log('RentController loaded')
         var vm = this;
-
         vm.rent = {};
         vm.rentTaxi = rentTaxi;
         vm.infoPrice = infoPrice;
 
         $scope.getTaxi = () => {
             var id = $routeParams.id;
+            console.log(id)
             dataFactory.getTaxi(id).then(function (response) {
                 $scope.taxi = response.data;
             });
