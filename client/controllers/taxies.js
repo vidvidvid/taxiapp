@@ -36,7 +36,6 @@ angular
             taxi.drivable = false;
             dataFactory.updateTaxi(id, taxi).then(function (response) {
                 $scope.taxi = response.data;
-                $route.reload();
             })
         }
 
@@ -101,7 +100,7 @@ angular
         }
 
         var updateTaxies = () => {
-            console.log('Updating taxies')
+            //console.log('Updating taxies')
             dataFactory.getTaxies().then(function (response) {
                 $scope.taxies = response.data;
                 $scope.currentlyRented = currentlyRented(taxies);
@@ -232,6 +231,7 @@ angular
                         }
                     },
                     yAxis: {
+                        tickInterval: 1,
                         title: {
                             text: 'Število najemov'
                         }
