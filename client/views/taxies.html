@@ -1,8 +1,8 @@
-<div ng-init="getTaxies()">
+<div ng-init="getTaxies()" class="md-padding">
     Trenutno v najemu: {{currentlyRented}} | $/min v 60: {{lastHourSumAll}} | najveckrat najet: {{mostRented}}
     <md-button ng-click="refreshData()">Osvezi podatke</md-button>
     <div id="container">Placeholder for chart</div>
-    <div class="md-padding" layout="row" layout-wrap>
+    <div layout="row" layout-wrap>
         <div ng-repeat="taxi in taxies">
             <a href="#!" ng-click="removeTaxi(taxi._id)">Delete</a>
             <taxi-card taxi="taxi"></taxi-card>

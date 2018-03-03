@@ -59,9 +59,7 @@ angular
                 dataFactory.getTaxies().then(function (response) {
                     number = response.data.length + 1;
                     taxi.name = "Taxi nr. " + number;
-                    dataFactory.addTaxi(taxi).then(function (response) {
-                        $route.reload();
-                    });
+                    dataFactory.addTaxi(taxi).then(function (response) {});
                 });
 
             });
@@ -72,7 +70,7 @@ angular
             var total = 0;
             for (var i = 0; i < taxies.length; i++) {
                 for (var j = 0; j < taxies[i].history.length; j++) {
-                    if (taxies[i].history[j].price > 0) total += taxies[i].history[j].price;
+                    total += taxies[i].history[j].price;
                 }
             }
             return total;

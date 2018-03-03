@@ -1,13 +1,21 @@
-<div ng-controller="HeaderController" class="md-padding" style="text-align: center;">
+<div ng-controller="HeaderController" style="text-align: center;">
     <div ng-init="getTaxies();">
-        <a href="#!"><img src="/img/logo/taxi.png" id="logo"></a> 
-        <md-toolbar>
+    <div class="panel">
             <div class="md-toolbar-tools">
-                <md-truncate id="sum">Skupna vsota dobičkov: {{gains}}</md-truncate>
-                <md-button class="md-cornered" ng-disabled="0>=gains" ng-click="buyTaxi()">Nakup taksija</md-button>
-                <md-button class="md-cornered" ng-click="addTaxi()">Dodaj taksi</md-button>
+                <a href="#!"><img src="/img/logo/taxi.png" id="logo"></a>
+                
+                <md-button class="md-fab md-primary md-hue-3" ng-disabled="0>=gains" ng-click="buyTaxi()">
+                    <md-tooltip md-direction="bottom">Nakup taksija</md-tooltip>
+                    <md-icon md-svg-src="img/icons/ic_add_shopping_cart_white_36px.svg"></md-icon>
+                </md-button>
+                <md-button class="md-fab md-primary md-hue-3 " ng-click="addTaxi()">
+                    <md-tooltip md-direction="bottom">Dodaj taksi</md-tooltip>
+                    <md-icon md-svg-src="img/icons/ic_add_black_36px.svg"></md-icon>
+                </md-button>
+
+                <md-truncate id="sum"><md-icon md-svg-src="img/icons/ic_trending_up_white_36px.svg"></md-icon> {{gains}} €</md-truncate>
             </div>
-        </md-toolbar>
+        </div>
         <br>
     </div>
 </div> 

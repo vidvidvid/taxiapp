@@ -212,7 +212,7 @@ angular
                 var d = new Date();
                 Highcharts.chart('container', {
                     chart: {
-                        type: 'column'
+                        type: 'areaspline'
                     },
                     title: {
                         text: 'Najem taksijev skozi čas'
@@ -222,6 +222,11 @@ angular
                         series: {
                             pointStart: d.setHours(d.getHours() - 2),
                             pointInterval: 60 * 1000 // 10 min
+                        },
+                        areaspline: {
+                            marker: {
+                                enabled: false
+                            }
                         }
                     },
                     xAxis: {
@@ -237,6 +242,7 @@ angular
                         }
                     },
                     series: [{
+                        color: '#eeee09',
                         data: array
                     }]
                 });

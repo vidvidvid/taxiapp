@@ -6,14 +6,6 @@
   font-size: 150px;
 }
 
-#sum {
-  color: black;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 21px;
-  bottom: 13px;
-}
 
 #logo {
   width: 200px;
@@ -30,15 +22,16 @@ img.resize {
   height: 300px;
 }
 
-.md-button {
-  color: black;
+
+#container {
+  padding-right: 20px;
 }
 
-.md-button:not([disabled]):hover {
-  background-color: rgba(158, 158, 158, 0.2);
+body {
+  background-color: rgb(238, 238, 238);
 }
 
-.md-button[disabled] {
-  color: rgba(0, 0, 0, 0.26);
-  background-color: transparent;
+.panel {
+  height:150px;
 }
+
