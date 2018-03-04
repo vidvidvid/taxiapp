@@ -1,22 +1,24 @@
-<div ng-controller="HeaderController" style="text-align: center;">
+<div ng-controller="HeaderController">
     <div ng-init="getTaxies();">
-    <div class="panel">
-            <div class="md-toolbar-tools">
-                <a href="#!"><img src="/img/logo/taxi.png" id="logo"></a>
-                
-                <md-button class="md-fab md-primary md-hue-3" ng-disabled="0>=gains" ng-click="buyTaxi()">
+        <div class="panel">
+            <div class="left">
+                <md-button class="md-fab mybtnstyle" ng-disabled="0>=gains" ng-click="buyTaxi()">
                     <md-tooltip md-direction="bottom">Nakup taksija</md-tooltip>
                     <md-icon md-svg-src="img/icons/ic_add_shopping_cart_white_36px.svg"></md-icon>
                 </md-button>
-                <md-button class="md-fab md-primary md-hue-3 " ng-click="addTaxi()">
+                <md-button class="md-fab mybtnstyle" ng-click="addTaxi()">
                     <md-tooltip md-direction="bottom">Dodaj taksi</md-tooltip>
-                    <md-icon md-svg-src="img/icons/ic_add_black_36px.svg"></md-icon>
+                    <md-icon md-svg-src="img/icons/ic_add_white_36px.svg"></md-icon>
                 </md-button>
-
-                <md-truncate id="sum"><md-icon md-svg-src="img/icons/ic_trending_up_white_36px.svg"></md-icon> {{gains}} €</md-truncate>
+            </div>
+            <div class="logo center">
+                <a href="#!">
+                    <img src="/img/logo/taksibrezluck.png" id="logo">
+                </a>
+            </div>
+            <div class="right">
+                    <md-icon md-svg-src="img/icons/ic_trending_up_white_36px.svg"></md-icon> {{gains}} €
             </div>
         </div>
-        <br>
     </div>
-</div> 
-
+</div>

@@ -111,7 +111,6 @@ angular
 
         $scope.refreshData = () => {
             dataFactory.getTaxies().then(function (response) {
-                console.log('osvezi');
                 taxiesHighchart();
             });
         }
@@ -153,7 +152,6 @@ angular
                     taxies = response.data;
                     var count, date, rentStart, rentEnd, point, date, length, name, nameNext, rentLength;
                     var timeNow = Math.floor(Date.now() / 60000);
-                    console.log('timeNow: ', timeNow);
                     var timeStart = timeNow - 180;
 
                     //fill the rents array with data
@@ -231,9 +229,6 @@ angular
                     },
                     xAxis: {
                         type: 'datetime',
-                        title: {
-                            text: 'Čas'
-                        }
                     },
                     yAxis: {
                         tickInterval: 1,
@@ -241,8 +236,13 @@ angular
                             text: 'Število najemov'
                         }
                     },
+                    tooltip: {
+                        shared: true,
+                        valuePrefix: 'Št. najetih taksijev: '
+                    },
                     series: [{
-                        color: '#eeee09',
+                        name: 'Taksiji',
+                        color: '#39796b',
                         data: array
                     }]
                 });

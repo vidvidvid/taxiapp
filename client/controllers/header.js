@@ -39,9 +39,7 @@ angular
                 dataFactory.getTaxies().then(function (response) {
                     number = response.data.length + 1;
                     taxi.name = "Taxi nr. " + number;
-                    dataFactory.addTaxi(taxi).then(function (response) {
-                        $route.reload();
-                    });
+                    dataFactory.addTaxi(taxi).then(function (response) {});
                 });
             });
         }

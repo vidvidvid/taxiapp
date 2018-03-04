@@ -45,8 +45,6 @@ angular
                     var d = new Date();
                     var today = d.getDate();
                     var date = new Date(taxi.history[0].date).getDate()
-                    console.log(date)
-                    
                     for(var i = 0; new Date(taxi.history[i].date).getDate() == today; i++){
                         if(taxi.history[i].name != 'Preklic' && taxi.history[i].name != 'Nakup') rents[new Date(taxi.history[i].date).getHours()]++;
                     }
@@ -57,7 +55,6 @@ angular
 
         taxiesHighchart = () => {
             getRentsArrayColumn().then(function (array) {
-                console.log(array)
                 var d = new Date();
                 Highcharts.chart('container', {
                     chart: {

@@ -2,36 +2,65 @@
   color: white;
 }
 
-#taxiIcon {
-  font-size: 150px;
-}
-
-
 #logo {
-  width: 200px;
+  width: 140px;
+  margin-top: 10px;
 }
 
 #taxiphoto {
-  width: auto;
   max-width: 100%;
 }
-
-img.resize {
-  width: 540px;
-  /* you can use % */
-  height: 300px;
-}
-
 
 #container {
   padding-right: 20px;
 }
 
 body {
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(255, 248, 233);
 }
 
 .panel {
-  height:150px;
+  text-align: center;
+  width: 100%;
+  height: 160px;
+  background-color: #ffc107;
+  border-bottom:2px solid black;
+  position: static;
 }
 
+.center {
+  display: inline-block;
+}
+
+.left {
+  top: 45px;
+  left: 25px;
+  position: absolute;
+}
+
+.right {
+  right: 20px;
+  top: 66px;
+  position: absolute;
+}
+
+.md-button.md-fab.mybtnstyle {
+  background-color: #00695c
+}
+
+.md-button.md-fab.mybtnstyle:hover {
+  background-color: #003d33; /* Green */
+}
+
+.banner {
+  border-bottom: 2px solid black;
+}
+
+md-input-container .md-input {
+  color: rgba(116, 38, 38, 0.87);
+  border-color: rgba(13, 148, 74, 0.82);
+  }
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+  border-color: #ff2e6d;
+}
