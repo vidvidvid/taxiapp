@@ -1,9 +1,6 @@
-<div ng-init="getTaxies()" class="md-padding">
-    <div class="banner">
-        Trenutno v najemu: {{currentlyRented}} | $/min v 60: {{lastHourSumAll}} | najveckrat najet: {{mostRented}}
-    </div>
-    
-    <md-button ng-click="refreshData()">Osvezi podatke</md-button>
+<div ng-init="getTaxies()">
+    <div class="banner">Trenutno v najemu: {{currentlyRented}} | €/min v zadnji uri: {{lastHourSumAll}} | Največkrat najet: {{mostRented}}</div>
+    <md-button ng-click="refreshData()" class="mybtnstyle">Osvezi podatke</md-button>
     <div id="container">Placeholder for chart</div>
     <div layout="row" layout-wrap>
         <div ng-repeat="taxi in taxies">

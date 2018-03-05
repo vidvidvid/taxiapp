@@ -150,7 +150,7 @@ angular
                     var rents = new Array(180);
                     rents.fill(0);
                     taxies = response.data;
-                    var count, date, rentStart, rentEnd, point, date, length, name, nameNext, rentLength;
+                    var count, date, rentStart, rentEnd, point, length, name, nameNext, rentLength;
                     var timeNow = Math.floor(Date.now() / 60000);
                     var timeStart = timeNow - 180;
 
@@ -241,9 +241,10 @@ angular
                         valuePrefix: 'Št. najetih taksijev: '
                     },
                     series: [{
-                        name: 'Taksiji',
+                        name: '',
                         color: '#39796b',
-                        data: array
+                        data: array,
+                        showInLegend: false,               
                     }]
                 });
             })

@@ -37,15 +37,14 @@ angular
             var id = $routeParams.id;
             return new Promise(function (resolve, reject) {
                 dataFactory.getTaxi(id).then(function (response) {
+                    taxi = response.data;
                     var rents = new Array(24);
                     rents.fill(0);
-                    taxi = response.data;
-                    var count, date, rentStart, rentEnd, point, date, length, name, nameNext, rentLength;
                     var timeNow = Math.floor(Date.now() / 360000);
                     var d = new Date();
                     var today = d.getDate();
-                    var date = new Date(taxi.history[0].date).getDate()
-                    for(var i = 0; new Date(taxi.history[i].date).getDate() == today; i++){
+                    for(var i = 0; i<taxi.history.length; i++){
+                        if(new Date(taxi.history[i].date).getDate() != today) break;
                         if(taxi.history[i].name != 'Preklic' && taxi.history[i].name != 'Nakup') rents[new Date(taxi.history[i].date).getHours()]++;
                     }
                     resolve(rents);
@@ -56,7 +55,7 @@ angular
         taxiesHighchart = () => {
             getRentsArrayColumn().then(function (array) {
                 var d = new Date();
-                Highcharts.chart('container', {
+                Highcharts.chart('container', { 
                     chart: {
                         type: 'column'
                     },
@@ -86,7 +85,8 @@ angular
                         }
                     },
                     series: [{
-                        data: array
+                        data: array,
+                        color: '#39796b'
                     }]
                 });
             })
