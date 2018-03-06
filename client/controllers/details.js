@@ -38,6 +38,32 @@ angular
             return new Promise(function (resolve, reject) {
                 dataFactory.getTaxi(id).then(function (response) {
                     taxi = response.data;
+                    var final = [];
+                    var history = taxi.history.filter(function( obj ) {
+                        return (obj.name !== 'Nakup' && obj.name !== 'Preklic');
+                    });
+                    if(history.length){ 
+                        var oneDay = 24*60*60*1000;
+                        var first = new Date(history[0].date).setHours(0,0,0,0) + oneDay;
+                        var last = new Date(history.slice(-1)[0].date).setHours(0,0,0,0) + oneDay;
+                        
+                        var rents = new Array((first - last)/oneDay + 1);
+                        rents.fill(0);
+                        console.log('rents: ', rents);
+                        
+                        var current;
+                        for(var i = 0; i < history.length; i++){
+                            current = new Date(history[i].date).setHours(0,0,0,0) + oneDay;
+                            console.log('current: ', current);
+                            rents[(current - last)/oneDay]++;
+                        }
+    
+                        
+                        for(var i = 0; i<rents.length; i++){
+                            final.push([last+i*oneDay, rents[i]]);
+                        }
+                    }
+                    /* //calculate the current day
                     var rents = new Array(24);
                     rents.fill(0);
                     var timeNow = Math.floor(Date.now() / 360000);
@@ -46,47 +72,36 @@ angular
                     for(var i = 0; i<taxi.history.length; i++){
                         if(new Date(taxi.history[i].date).getDate() != today) break;
                         if(taxi.history[i].name != 'Preklic' && taxi.history[i].name != 'Nakup') rents[new Date(taxi.history[i].date).getHours()]++;
-                    }
-                    resolve(rents);
+                    }*/
+                    resolve(final);
                 })
             })
         }
 
         taxiesHighchart = () => {
             getRentsArrayColumn().then(function (array) {
-                var d = new Date();
-                Highcharts.chart('container', { 
+                Highcharts.stockChart('container', {
                     chart: {
-                        type: 'column'
+                        type: 'areaspline'
                     },
                     title: {
-                        text: 'Najem taksijev skozi čas'
+                        text: 'Najem taksija skozi čas'
                     },
-                    legend: {
-                        enabled: false
+            
+                    rangeSelector: {
+                        floating: true,
+                        y: -65,
+                        verticalAlign: 'bottom'
                     },
-
-                    plotOptions: {
-                        series: {
-                            pointStart: d.setHours(1,0),
-                            pointInterval: 3600 * 1000 //  min
-                        }
+            
+                    navigator: {
+                        margin: 60
                     },
-                    xAxis: {
-                        type: 'datetime',
-                        title: {
-                            text: 'Čas'
-                        }
-                    },
-                    yAxis: {
-                        tickInterval: 1,
-                        title: {
-                            text: 'Število najemov'
-                        }
-                    },
+            
                     series: [{
+                        name: 'Število najetij',
                         data: array,
-                        color: '#39796b'
+                        color: '#39796b',
                     }]
                 });
             })

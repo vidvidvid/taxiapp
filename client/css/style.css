@@ -93,20 +93,13 @@ body {
 }
 
 md-input-container .md-input {
-  border-color: rgba(13, 148, 74, 0.82);
+  border-color: #00695c;
 }
 
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
-  border-color: #ff2e6d;
+  border-color: #003d33;
 }
 
 md-input-container > md-select  {
-  border-color: rgba(13, 148, 74, 0.82);
-}
-
-.frameContainer md-whiteframe {
-  background: #ffe54c;
-  font-size: 24px;
-  width: 200%;
-  height: 70px;
+  border-color: #00695c;
 }

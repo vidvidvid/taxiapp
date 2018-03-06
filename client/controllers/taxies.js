@@ -115,34 +115,6 @@ angular
             });
         }
 
-        // frekvenca najemov
-        /*getRentsArrayLine = () => {
-            return new Promise(function (resolve, reject) {
-                dataFactory.getTaxies().then(function (response) {
-                    var rents = new Array(18);
-                    rents.fill(0);
-                    taxies = response.data;
-                    var count, date, rentStart, point;
-                    var timeNow = Math.floor(Date.now() / 60000);
-                    var timeStart = timeNow - 180;
-
-                    //fill the rents array with data
-                    for (var i = 0; i < taxies.length; i++) {
-                        for (var j = 0; j < taxies[i].history.length; j++) {
-                            rentStart = Math.floor(taxies[i].history[j].date / 60000);
-                            if (rentStart <= timeStart) break;
-                            if (taxies[i].history[j].name != 'Nakup' && taxies[i].history[j].name != 'Preklic') {
-                                point = Math.floor((timeNow - rentStart) / 10);
-                                rents[point]++;
-                            }
-                        }
-                    }
-                    rents.reverse();
-                    resolve(rents);
-                })
-            })
-        }*/
-
         // najem taksijev skozi cas
         getRentsArrayColumn = () => {
             return new Promise(function (resolve, reject) {

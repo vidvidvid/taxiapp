@@ -1,7 +1,7 @@
 <div ng-init="getTaxies()">
     <div class="banner">Trenutno v najemu: {{currentlyRented}} | €/min v zadnji uri: {{lastHourSumAll}} | Največkrat najet: {{mostRented}}</div>
     <md-button ng-click="refreshData()" class="mybtnstyle">Osvezi podatke</md-button>
-    <div id="container">Placeholder for chart</div>
+    <div id="container"><md-progress-circular md-mode="indeterminate"></md-progress-circular></div>
     <div layout="row" layout-wrap>
         <div ng-repeat="taxi in taxies">
             <a href="#!" ng-click="removeTaxi(taxi._id)">Delete</a>
