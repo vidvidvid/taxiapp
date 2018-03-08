@@ -121,6 +121,7 @@ md-input-container>md-select {
 .taxi-details {
   margin-left: 23px;
   margin-right: 23px;
+  background-color: rgb(255, 248, 233);
 }
 
 .taxies-chart {

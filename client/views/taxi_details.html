@@ -7,44 +7,43 @@
     </div>
     <div layout="row" class="taxi-details">
         <div flex-gt-xs="50" >
-            <img id="taxiphoto" ng-src="{{taxi.photo_url}}">
-            <md-content>
-                <md-list flex>
-                    <md-header class="md-no-sticky">Zgodovina najemov</md-header>
-                    <md-list-item class="md-3-line" ng-repeat="rent in taxi.history">
-                        <md-icon ng-show="rent.company" class="md-avatar ">work</md-icon>
-                        <md-icon ng-show="rent.name!='Preklic' && rent.name!='Nakup' && rent.name" class="md-avatar">person</md-icon>
-                        <md-icon ng-show="rent.name==='Preklic'" class="md-avatar">cancel</md-icon>
-                        <md-icon ng-show="rent.name==='Nakup'" class="md-avatar">shopping_cart</md-icon>
-                        
-                        <div class="md-list-item-text" layout="column">
-                            <div ng-show="rent.name">
-                                <h3>{{rent.name}} {{rent.surname}}</h3>
-                            </div>
-                            <div ng-show="rent.company">
-                                <h3>{{rent.company}}</h3>
-                            </div>
-                            <div ng-show="rent.date">
-                                <h4>{{rent.date | date:'MM/dd/yyyy hh:mm:ss'}}</h4>
-                            </div>
-                            <div ng-show="rent.length">
-                                <p>Dolzina najema: {{rent.length}}</p>
-                            </div>
-                            <div ng-show="rent.name != 'Nakup'">
-                                <p>Dobicek: {{rent.price}}</p>
-                            </div>
-                            <div ng-show="rent.name == 'Nakup'">
-                                <p>Cena: {{rent.price*(-1)}}</p>
-                            </div>
-                        </div>
-                    </md-list-item>
-                </md-list>
-            </md-content>
+            <div>
+                <img id="taxiphoto" ng-src="{{taxi.photo_url}}">
+            </div>
+            <md-header class="md-no-sticky">Zgodovina najemov</md-header>
+            <md-list-item class="md-3-line" ng-repeat="rent in taxi.history">
+                <md-icon ng-show="rent.company" class="md-avatar ">work</md-icon>
+                <md-icon ng-show="rent.name!='Preklic' && rent.name!='Nakup' && rent.name" class="md-avatar">person</md-icon>
+                <md-icon ng-show="rent.name==='Preklic'" class="md-avatar">cancel</md-icon>
+                <md-icon ng-show="rent.name==='Nakup'" class="md-avatar">shopping_cart</md-icon>
+                
+                <div class="md-list-item-text" layout="column">
+                    <div ng-show="rent.name">
+                        <h3>{{rent.name}} {{rent.surname}}</h3>
+                    </div>
+                    <div ng-show="rent.company">
+                        <h3>{{rent.company}}</h3>
+                    </div>
+                    <div ng-show="rent.date">
+                        <h4>{{rent.date | date:'MM/dd/yyyy hh:mm:ss'}}</h4>
+                    </div>
+                    <div ng-show="rent.length">
+                        <p>Dolzina najema: {{rent.length}}</p>
+                    </div>
+                    <div ng-show="rent.name != 'Nakup'">
+                        <p>Dobicek: {{rent.price}}</p>
+                    </div>
+                    <div ng-show="rent.name == 'Nakup'">
+                        <p>Cena: {{rent.price*(-1)}}</p>
+                    </div>
+                </div>
+            </md-list-item>
+
         </div>
         <div flex-gt-xs="50" >
             <div id="container" layout="column" layout-align="center center">
                 <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-              </div>
+            </div>
         </div>
     </div>            
 </div>
