@@ -39,28 +39,28 @@ angular
                 dataFactory.getTaxi(id).then(function (response) {
                     taxi = response.data;
                     var final = [];
-                    var history = taxi.history.filter(function( obj ) {
+                    var history = taxi.history.filter(function (obj) {
                         return (obj.name !== 'Nakup' && obj.name !== 'Preklic');
                     });
-                    if(history.length){ 
-                        var oneDay = 24*60*60*1000;
-                        var first = new Date(history[0].date).setHours(0,0,0,0) + oneDay;
-                        var last = new Date(history.slice(-1)[0].date).setHours(0,0,0,0) + oneDay;
-                        
-                        var rents = new Array((first - last)/oneDay + 1);
+                    if (history.length) {
+                        var oneDay = 24 * 60 * 60 * 1000;
+                        var first = new Date(history[0].date).setHours(0, 0, 0, 0) + oneDay;
+                        var last = new Date(history.slice(-1)[0].date).setHours(0, 0, 0, 0) + oneDay;
+
+                        var rents = new Array((first - last) / oneDay + 1);
                         rents.fill(0);
                         console.log('rents: ', rents);
-                        
+
                         var current;
-                        for(var i = 0; i < history.length; i++){
-                            current = new Date(history[i].date).setHours(0,0,0,0) + oneDay;
+                        for (var i = 0; i < history.length; i++) {
+                            current = new Date(history[i].date).setHours(0, 0, 0, 0) + oneDay;
                             console.log('current: ', current);
-                            rents[(current - last)/oneDay]++;
+                            rents[(current - last) / oneDay]++;
                         }
-    
-                        
-                        for(var i = 0; i<rents.length; i++){
-                            final.push([last+i*oneDay, rents[i]]);
+
+
+                        for (var i = 0; i < rents.length; i++) {
+                            final.push([last + i * oneDay, rents[i]]);
                         }
                     }
                     /* //calculate the current day
@@ -87,17 +87,17 @@ angular
                     title: {
                         text: 'Najem taksija skozi čas'
                     },
-            
+
                     rangeSelector: {
                         floating: true,
                         y: -65,
                         verticalAlign: 'bottom'
                     },
-            
+
                     navigator: {
                         margin: 60
                     },
-            
+
                     series: [{
                         name: 'Število najetij',
                         data: array,

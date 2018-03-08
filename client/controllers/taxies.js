@@ -216,7 +216,7 @@ angular
                         name: '',
                         color: '#39796b',
                         data: array,
-                        showInLegend: false,               
+                        showInLegend: false,
                     }]
                 });
             })

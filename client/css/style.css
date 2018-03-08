@@ -24,7 +24,7 @@ body {
   width: 100%;
   height: 160px;
   background-color: #ffc107;
-  border-bottom:2px solid black;
+  border-bottom: 2px solid black;
   position: static;
 }
 
@@ -42,7 +42,6 @@ body {
   right: 20px;
   top: 60px;
   position: absolute;
-     
 }
 
 .banner {
@@ -82,14 +81,14 @@ body {
 }
 
 .md-button.md-fab.mybtnstyle:not([disabled]):hover {
-  background-color: #003d33; /* Green */
+  background-color: #003d33;
+  /* Green */
 }
 
 .md-button.mybtnstyle {
   color: white;
   background-color: #00695c;
   height: 40px;
-  
 }
 
 .md-button.mybtnstyle[disabled] {
@@ -98,7 +97,8 @@ body {
 }
 
 .md-button.mybtnstyle:not([disabled]):hover {
-  background-color: #003d33; /* Green */
+  background-color: #003d33;
+  /* Green */
 }
 
 .md-button {
@@ -113,16 +113,16 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input {
   border-color: #003d33;
 }
 
-md-input-container > md-select  {
+md-input-container>md-select {
   border-color: #00695c;
 }
 
-.taxi-details{
+.taxi-details {
   margin-left: 23px;
   margin-right: 23px;
 }
 
-.taxies-chart{
+.taxies-chart {
   margin-top: 10px;
   margin-left: 7.5px;
   margin-right: 7.5px;
