@@ -82,7 +82,7 @@ angular
             getRentsArrayColumn().then(function (array) {
                 Highcharts.stockChart('container', {
                     chart: {
-                        type: 'areaspline'
+                        type: 'spline'
                     },
                     title: {
                         text: 'Najem taksija skozi čas'

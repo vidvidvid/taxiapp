@@ -34,7 +34,7 @@ body {
 
 .left {
   top: 45px;
-  left: 25px;
+  left: 20px;
   position: absolute;
 }
 
@@ -69,11 +69,19 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+#osvezi-podatke {
+  width: 150px;
+}
+
 .md-button.md-fab.mybtnstyle {
   background-color: #00695c
 }
 
-.md-button.md-fab.mybtnstyle:hover {
+.md-button.md-fab.mybtnstyle[disabled] {
+  background-color: #578b85
+}
+
+.md-button.md-fab.mybtnstyle:not([disabled]):hover {
   background-color: #003d33; /* Green */
 }
 
@@ -84,7 +92,12 @@ body {
   
 }
 
-.md-button.mybtnstyle:hover {
+.md-button.mybtnstyle[disabled] {
+  background-color: #578b85;
+  color: white;
+}
+
+.md-button.mybtnstyle:not([disabled]):hover {
   background-color: #003d33; /* Green */
 }
 
@@ -102,4 +115,15 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input {
 
 md-input-container > md-select  {
   border-color: #00695c;
+}
+
+.taxi-details{
+  margin-left: 23px;
+  margin-right: 23px;
+}
+
+.taxies-chart{
+  margin-top: 10px;
+  margin-left: 7.5px;
+  margin-right: 7.5px;
 }

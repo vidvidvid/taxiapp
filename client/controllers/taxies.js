@@ -182,7 +182,7 @@ angular
                 var d = new Date();
                 Highcharts.chart('container', {
                     chart: {
-                        type: 'areaspline'
+                        type: 'spline'
                     },
                     title: {
                         text: 'Najem taksijev skozi čas'
@@ -193,7 +193,7 @@ angular
                             pointStart: d.setHours(d.getHours() - 2),
                             pointInterval: 60 * 1000 // 10 min
                         },
-                        areaspline: {
+                        spline: {
                             marker: {
                                 enabled: false
                             }

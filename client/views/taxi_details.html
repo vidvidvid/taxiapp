@@ -1,19 +1,16 @@
-<div flex ng-init="getTaxi()" class="md-padding">
-    
-    <md-toolbar layout="row" class="md-hue-3">
-        <div class="md-toolbar-tools">
-            <span id="name">{{taxi.name}}</span> 
-            <md-button ng-disabled="!taxi.drivable" ng-click="disableTaxi(taxi, taxi._id)">Odpis taksija</md-button>
-        </div>
-    </md-toolbar>
-    <br>
-    <div layout="row">
+<div flex ng-init="getTaxi()" >
+    <div class="banner" >
+        <span>{{taxi.name}} | Skupna vsota dobickov: {{getTotal(taxi) || 0}}
+    </div>
+    <div class="md-padding">
+            <md-button ng-disabled="!taxi.drivable" ng-click="disableTaxi(taxi, taxi._id)" class="mybtnstyle md-raised" id="osvezi-podatke">Odpis taksija</md-button>
+    </div>
+    <div layout="row" class="taxi-details">
         <div flex-gt-xs="50" >
             <img id="taxiphoto" ng-src="{{taxi.photo_url}}">
             <md-content>
                 <md-list flex>
-                    <md-subheader class="md-no-sticky">Skupna vsota dobickov: {{getTotal(taxi) || []}}</md-subheader>
-                    <md-subheader class="md-no-sticky">Zgodovina najemov</md-subheader>
+                    <md-header class="md-no-sticky">Zgodovina najemov</md-header>
                     <md-list-item class="md-3-line" ng-repeat="rent in taxi.history">
                         <md-icon ng-show="rent.company" class="md-avatar ">work</md-icon>
                         <md-icon ng-show="rent.name!='Preklic' && rent.name!='Nakup' && rent.name" class="md-avatar">person</md-icon>
