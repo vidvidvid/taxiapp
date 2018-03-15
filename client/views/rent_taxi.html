@@ -1,6 +1,6 @@
 <form ng-init="getTaxi()" ng-submit="rentCtrl.rentTaxi(taxi)">
     <h2 class="md-padding ">{{taxi.name}}</h2>
-    <div ng-show="rentCtrl.rent.length">
+    <div ng-show="rentCtrl.rent.length" class="md-padding ">
         Informativni izracun cene: {{rentCtrl.infoPrice(rentCtrl.rent.length)}}
     </div>
 
