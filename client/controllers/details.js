@@ -89,9 +89,7 @@ angular
                     },
 
                     rangeSelector: {
-                        floating: true,
-                        y: -65,
-                        verticalAlign: 'bottom'
+                        enabled: false,
                     },
 
                     navigator: {
